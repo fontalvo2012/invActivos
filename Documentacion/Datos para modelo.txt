@@ -1,0 +1,39 @@
+Activos Datos:
+	*)id
+	*)Imagen del Insumo
+	*)item
+	*)codigo
+	*)Tipo:(Nombre)
+	   (Torre,impresora,monitor,Onlyone,Microscopio,centrifuga)*Espesificaciones tecnicas
+	*)Descripcion
+	*)Serial
+	*)Marca
+	*)Modelo
+	*)Dependencia
+	*)Pertenecia
+	    (Nuestro,Como Dato)
+	*)Dueño
+	    *(Datos del Dueño)
+	*)Sede
+	*)Fecha de Adquisicion
+	*)Responsable
+	*)Estado
+	    + En condicion de uso 
+	    + En no condicion de uso
+	*)Proveedor
+	    *(Datos Del proveedor)
+	*)Costo de Adquicicion 
+	
+
+
+::DATOS DE TIPO	::
+	
+   +CPU:
+   +MONITORES:
+   +ONLYONE
+   +SERVER
+   +IMPRESORAS
+   
+
+
+	

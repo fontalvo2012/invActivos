@@ -1,0 +1,36 @@
+.spacing-1{
+  margin-top: 5em;
+}
+
+.spacing-2{
+  margin-top: 1em;
+}
+
+.center{
+  text-align: center;
+}
+
+.text-accent{
+  color: #727272;
+}
+
+input[type="text"]{
+  width: 80%;
+  padding-left: 10px; 
+  border-radius: 10px;
+}
+
+input[type=text]:focus {
+  background-color: lightblue;
+}
+
+select{
+  width: 80%;
+  padding-left: 10px; 
+  border-radius: 10px;
+}
+
+select:focus{
+  background-color: lightblue;
+}
+
