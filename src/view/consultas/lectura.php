@@ -1,11 +1,7 @@
 <div class="container p-4"> 
         <div class="form-group"> 
-          <table> 
-            <tr>  
-                <td><span onclick="IniciarCamara()"><i class='fas fa-qrcode mr-4' style='font-size:30px'></i></span></td>
-                <td><input type="text" id="cod"  placeholder="Codigo"></td>
-            </tr>
-          </table>      
+            <button id="btqr" class="btn btn-success btn-block" onclick="IniciarCamara()"><span ><i class='fas fa-qrcode ml-2'  style='font-size:20px'></i></span>  Leer Codigo</button>
+               
         </div>  
         <div class="row" id="load" hidden="hidden">
                 <div class="col-xs-4 col-xs-offset-4 col-md-2 col-md-offset-5">
@@ -17,8 +13,7 @@
               </div>      
         
         <div class="form-group">     
-            <video id="preview" style="width: 80%; height: 50%; margin-left: 10%; "></video>  
-       
+            <video id="preview" style="width: 80%; height: 50%; margin-left: 10%;"></video>       
         </div>
         <div class="form-group">
           <a href="index.php?opt=equipos" class="btn btn-warning btn-block" id="d1"> Registrar Activo</a>

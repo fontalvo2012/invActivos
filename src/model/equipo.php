@@ -36,7 +36,6 @@
         echo 'index.php';
 
       }
-
       parent::cerrar();
     }
 

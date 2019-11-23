@@ -13,12 +13,15 @@
          });
 
        function IniciarCamara(){
-           $('#preview').show(1000);            
+           $('#preview').show(1000); 
+           $('#btqr').hide(1000);
            let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
              scanner.addListener('scan', function (content) {                  
                //  $("#contenido").html("Resutado: "+content);
                  ConsultarEquipo(content);
-
+                 $('#btqr').show(1000);
+                 $('#preview').hide(1000); 
+                 scanner.stop();
              });
            Instascan.Camera.getCameras().then(function (cameras) {
              if (cameras.length > 0) {
@@ -79,6 +82,25 @@ function registrarProveedor(){
     }
   });
 }
+function registrarEquipo(){  
+  var form = $('#formproveedor').serialize();
+  $.ajax({
+    method: 'POST',
+    url: 'controller/proveedorController.php',
+    data: form,
+    beforeSend: function(){
+      $('#load').show();
+    },
+    success: function(res){
+      $('#load').hide();      
+      if(res == 'error_1'){
+        swal('Error', 'Campos obligatorios, por favor llenar', 'warning');      
+      }else{
+       window.location.href = res ;
+      }
+    }
+  });
+}
 
 function ConsultarEquipo(codigo){  
   $.ajax({
@@ -93,10 +115,11 @@ function ConsultarEquipo(codigo){
     success: function(res){
       $('#load').hide();
       sonar();
-      $("#cod").val(codigo);
+      //$("#cod").val(codigo);
+      $("#qrcode").val(codigo);
+     // prompt("dato",res);
       if(res =='1000'){        
-        $('#d1').show(1200); 
-             
+        $('#d1').show(1200);              
       }else{
         $('#d2').show(1400); 
         $('#d3').show(1600);

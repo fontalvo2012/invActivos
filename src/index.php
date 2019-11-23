@@ -21,16 +21,23 @@
 
   <body>
     <?php 
+      session_start();
       include('view/redirec.php');
       include('view/encabezados/menu.php');
- 
+     
+
+    ?>
+      <div class="container m-2">
+        <input type="text" id="qrcode" value="<?php echo @$_SESSION['cod']?>" class="form-control form-control-sm " name="qrcode">
+      </div>
+      
+    <?php 
      redirec(@$_GET['opt']);
     ?>
 
 
     <!-- SweetAlert js -->
-    <script src="js/jquery.js"></script>
-  
+    <script src="js/jquery.js"></script>  
     <script src="../js/sweetalert.min.js"></script>
     <!-- Js personalizado -->
   

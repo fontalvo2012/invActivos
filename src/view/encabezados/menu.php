@@ -19,9 +19,9 @@
           Registros
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="index.php?opt=proveedor">Proveedor</a>          
+          <a class="dropdown-item" href="index.php?opt=proveedor">Proveedor</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">..</a>
+          <a class="dropdown-item" href="index.php?opt=proveedor">Sedes</a>    
         </div>
       </li>
       <li class="nav-item">

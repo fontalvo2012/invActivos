@@ -16,26 +16,26 @@
 		}
 		function crearContenedores(){
 			var cadena='';
-			var num=10000;
+			var num=0;
 			for (var i = 0; i < 56; i++) {								
 				
 				cadena+=`
 						<div class="c" style="border:solid;">		
 							<div class="contenedor">
 								<div id="c${i}"></div>
-								<h5 class="j">UPC-${num}</h5>
+								<h5 class="j">ES-000${num}</h5>
 							</div>
 						</div> <br>`;	
-						console.log('UPC-'+(num),'c'+i);						
+						console.log('ES-000'+(num),'c'+i);						
 						num++;
 			}
 				$('#g').html(cadena);				
 		}
 		function crearCodigos(){
 			var cadena='';
-			var num=10000;
+			var num=0;
 			for (var i = 0; i < 56; i++) {				
-				prueba('UPC-'+(num++),'c'+i);					
+				prueba('ES-000'+(num++),'c'+i);					
 			}								
 		}		 
 	</script>
