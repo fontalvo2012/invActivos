@@ -14,7 +14,7 @@
         <a class="nav-link active" href="#" onclick="generarForm(1)">Generales</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#"  onclick="generarForm(2)">Espesificos</a>
+        <a class="nav-link" href="#"  onclick="validarEquipo()">Espesificos</a>
       </li> 
     </ul>
 
