@@ -19,10 +19,9 @@
           Registros
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="index.php?opt=equipos">Equipos</a>
-          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="index.php?opt=proveedor">Proveedor</a>          
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#">..</a>
         </div>
       </li>
       <li class="nav-item">

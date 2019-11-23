@@ -71,8 +71,6 @@
       </div>
     </div>
 
-    <!-- / Final Formulario login -->
-
     <!-- Jquery -->
     <script src="js/jquery.js"></script>
     <!-- Bootstrap js -->

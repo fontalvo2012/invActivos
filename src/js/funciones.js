@@ -63,9 +63,27 @@ function registrarUsuario(){
   });
 }
 
+function registrarProveedor(){  
+  var form = $('#formproveedor').serialize();
+  $.ajax({
+    method: 'POST',
+    url: 'controller/proveedorController.php',
+    data: form,
+    beforeSend: function(){
+      $('#load').show();
+    },
+    success: function(res){
+      $('#load').hide();      
+      if(res == 'error_1'){
+        swal('Error', 'Campos obligatorios, por favor llenar', 'warning');      
+      }else{
+       window.location.href = res ;
+      }
+    }
+  });
+}
 
-function ConsultarEquipo(codigo){
-  
+function ConsultarEquipo(codigo){  
   $.ajax({
     method: 'POST',
     url: 'controller/equiposController.php',
@@ -87,11 +105,10 @@ function ConsultarEquipo(codigo){
         $('#d3').show(1600);
         $('#d4').show(1800);
       }
-      
-      
     }
   });
 }
+
        
 $('#registro').click(function(){
   var form = $('#formulario_registro').serialize();
