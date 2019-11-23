@@ -13,23 +13,24 @@
 <fieldset>
   <div class="container">
       <div class="form-group">
-          <input type="text" id="nit" name="nit" placeholder="Nit">
+          <input type="text" id="nit" class='form-control form-control-sm' name="nit" placeholder="Nit">
       </div>
       <div class="form-group">
-          <input type="text" id="nombre" name="nombre" placeholder="Nombre">
+          <input type="text" id="nombre" class='form-control form-control-sm' name="nombre" placeholder="Nombre">
       </div>
       <div class="form-group">
-          <input type="text" id="direccion" name="direccion" placeholder="Direccion">       
+          <input type="text" id="direccion" class='form-control form-control-sm' name="direccion" placeholder="Direccion">       
       </div>
       <div class="form-group">
-          <input type="text" id="email" name="email" placeholder="Email">
+          <input type="text" id="email" class='form-control form-control-sm' name="email" placeholder="Email">
       </div>
       <div class="form-group">
-          <input type="text" id="telefono" name="telefono" placeholder="Telefono">
+          <input type="text" id="telefono" class='form-control form-control-sm' name="telefono" placeholder="Telefono">
       </div>    
       <div class="form-group">
-        <button class="btn btn-success btn-block" id="regProveedor" onclick="registrarProveedor()">Ingresar</button>
+        <button class="btn btn-success btn-block" class='form-control form-control-sm' id="regProveedor" onclick="registrarProveedor()">Ingresar</button>
       </div>
+      
   </div>
   </fieldset>
 </form>
