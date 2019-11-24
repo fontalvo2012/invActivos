@@ -147,14 +147,10 @@
       if($verificarCorreo > 0){
         echo 'error_3';
       }else{
-
         parent::query('insert into usuarios(nombre, email, clave, cargo) values("'.$name.'", "'.$email.'", MD5("'.$clave.'"), 2)');
-
         session_start();
-
         $_SESSION['nombre'] = $name;
         $_SESSION['cargo']  = 2;
-
         echo 'src/index.php';
 
       }

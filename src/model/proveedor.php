@@ -19,6 +19,15 @@
       parent::cerrar();
     }
 
+    public function select()
+    {
+      parent::conectar();
+      $consulta = 'select NIT,nombre from proveedores';
+      $select = parent::selectProveedor($consulta);
+      echo $select;      
+      parent::cerrar();
+    }
+
     public function registroProveedor($nit, $nombre, $direccion,$telefono,$email)    {
       parent::conectar();
       $nit  = parent::filtrar($nit);

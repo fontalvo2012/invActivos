@@ -11,6 +11,7 @@
 </div>   
 <form id="formproveedor"> 
 <fieldset>
+  <input type="hidden" value="registrar" name="opcion">
   <div class="container">
       <div class="form-group">
           <input type="text" id="nit" class='form-control form-control-sm' name="nit" placeholder="Nit">
@@ -31,6 +32,9 @@
         <button class="btn btn-success btn-block" class='form-control form-control-sm' id="regProveedor" onclick="registrarProveedor()">Ingresar</button>
       </div>
       
+      
   </div>
   </fieldset>
 </form>
+
+<button onclick='selectProveedor()'>probar</button>

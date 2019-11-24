@@ -4,7 +4,6 @@
 
     class Conexion
     {
-
         # Atributos de la clase conexion
         private $mysqli = '';
         private $usuario = 'root';
@@ -28,12 +27,31 @@
 
         }
 
-
         # Function que retorna un objeto de MySQL
         public function query($consulta)
         {
           #mysqli_query Realiza una consulta a la base de datos
           return $this->mysqli->query($consulta);
+        }
+
+        public function selectProveedor($consulta){
+          
+          if ($resultado = $this->mysqli->query($consulta)) {
+            /* obtener el array de objetos */
+            
+            $cadena="<select name='proveedor' id='proveedor' class='custom-select custom-select-sm'>
+                     <option value=''>::Seleccionar Proveedor::.</option>  
+                     ";
+            while ($fila = $resultado->fetch_row()) {
+                $cadena.="<option value='".$fila[0]."'>".$fila[1]."</option>";              
+            }        
+            $cadena.="</select>";
+            
+            /* liberar el conjunto de resultados */
+           
+          }
+
+          return $cadena;
         }
 
 

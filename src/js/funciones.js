@@ -82,6 +82,21 @@ function registrarProveedor(){
     }
   });
 }
+function selectProveedor(){    
+  $.ajax({
+    method: 'POST',
+    url: 'controller/proveedorController.php',
+    data: {      
+      opcion:'select'
+    },
+    success: function(res){
+      console.log(res);
+      $('#select').html(res);
+
+    }
+  });
+}
+
 function registrarEquipo(){  
   codigo=$('#qrcode').val();  
   $.ajax({
@@ -191,7 +206,6 @@ $('#registro').click(function(){
 //========================================================================================
 function generarForm(opt){
   espesificos=` 
-
   <div class="container m-2">
   <ul class="nav nav-tabs">
     <li class="nav-item">
@@ -212,24 +226,24 @@ function generarForm(opt){
   <input type="text" id="dependencia" name="dependencia" class="form-control form-control-sm" placeholder="•	Dependencia">
   <input type="text" id="dueno" name="dueno" class="form-control form-control-sm" placeholder="•	Dueño  ">
   <select name="sede" id="sede" class="custom-select custom-select-sm">
-  <option selected>Sede</option>
+  <option selected>.::Sede::.</option>
   <option value="bocagrande">Bocagrande</option>
   <option value="ejecutivos">Ejecutivos</option>
   <option value="amberes">Amberes</option>
    </select>
   <input type="date" id="fcompra" name="fcompra" class="form-control form-control-sm">
   <input type="text" id="responsable" name="responsable" class="form-control form-control-sm" placeholder="•	Responsable">
-  <input type="text" id="estado" name="estado" class="form-control form-control-sm" placeholder="•	Estado">
-  <input type="text" id="costo" name="costo" class="form-control form-control-sm" placeholder="•	Costo">
-  <select name="proveedor" id="proveedor" class="custom-select custom-select-sm">
-  <option selected>Proveedor</option>
-  <option value="Compulago">Compulago</option> 
+  <select name="estado" id="estado" class="custom-select custom-select-sm">
+  <option selected>.::Estado::.</option>
+  <option value="bueno">En condicion</option>
+  <option value="malo">En No condicion</option>  
    </select>
+  <input type="text" id="costo" name="costo" class="form-control form-control-sm" placeholder="•	Costo">
+  <div id="select"></div>  
    <div class="form-group">
         <button class="btn btn-success btn-block mt-3" onclick="registrarEquipo()">Ingresar</button>
      </div>
-  </div> 
- 
+  </div>  
   `;
 
 generales=` <div class="container m-2">
@@ -245,7 +259,12 @@ generales=` <div class="container m-2">
 
 
 if (opt==1) {
+  if($('#tipo').val()!=""){
   $('#form').html(espesificos);
+  selectProveedor();
+  }else{
+    swal('Error', 'Debe Seleccionar Un Producto', 'warning');
+  }
 }else{
   $.ajax({
     method: 'POST',
