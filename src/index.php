@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>QR Code Reader using Instascan</title>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="js/instascan.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>

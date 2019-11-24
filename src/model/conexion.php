@@ -34,16 +34,15 @@
           return $this->mysqli->query($consulta);
         }
 
-        public function selectProveedor($consulta){
-          
+        public function selectItem($consulta,$nombre){          
           if ($resultado = $this->mysqli->query($consulta)) {
-            /* obtener el array de objetos */
+              /* obtener el array de objetos */
             
-            $cadena="<select name='proveedor' id='proveedor' class='custom-select custom-select-sm'>
-                     <option value=''>::Seleccionar Proveedor::.</option>  
+            $cadena="<select name='".$nombre."' id='".$nombre."' class='custom-select custom-select-sm'>
+                     <option value=''>::Seleccionar ".$nombre."::.</option>  
                      ";
             while ($fila = $resultado->fetch_row()) {
-                $cadena.="<option value='".$fila[0]."'>".$fila[1]."</option>";              
+                $cadena.="<option value='".$fila[1]."'>".$fila[1]."</option>";              
             }        
             $cadena.="</select>";
             

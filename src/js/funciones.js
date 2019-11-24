@@ -92,9 +92,30 @@ function selectProveedor(){
     success: function(res){
       console.log(res);
       $('#select').html(res);
-
     }
   });
+}
+
+function cargarimagen(){
+  var codigo=$('#qrcode');
+  var file_data = $('#foto').prop('files')[0];   
+  var form_data = new FormData();                  
+  form_data.append('file', file_data);
+  form_data.append('codigo', codigo);
+  console.log(form_data);
+  $.ajax({
+    url: 'controller/controllerFile.php', // point to server-side PHP script 
+    dataType: 'text',  // what to expect back from the PHP script, if anything
+    cache: false,
+    contentType: false,
+    processData: false,
+    data: form_data,                         
+    type: 'post',
+    success: function(res){
+        console.log(res);
+        swal('Info', 'Imagen Subida', 'success');
+    }
+ });
 }
 
 function registrarEquipo(){  
@@ -157,7 +178,7 @@ function ConsultarEquipo(codigo){
 }  
 
 //Valida el codigo del equipo
-function validarEquipo(){
+function validarEquipo(t){
   codigo=$('#qrcode').val();
   $.ajax({
     method: 'POST',
@@ -171,9 +192,27 @@ function validarEquipo(){
       if(res == 'Error_2'){
         swal('Alvertencia', 'Campos obligatorios, por favor llenarlos', 'warning');
         generarForm(1);
-      }else{
+      } 
+      if(t==2){
         generarForm(2);
-      }   
+      }
+      if(t==3){
+        generarForm(3);
+      }
+    }
+  });
+}    
+function selectEquipo(){ 
+  $.ajax({
+    method: 'POST',
+    url: 'controller/equiposController.php',
+    data:{     
+      op:'4'
+    },    
+    success: function(res){ 
+      console.log(res);  
+      $('#t').html(res);
+
     }
   });
 }    
@@ -209,16 +248,16 @@ function generarForm(opt){
   <div class="container m-2">
   <ul class="nav nav-tabs">
     <li class="nav-item">
-      <a class="nav-link active" href="#" onclick="generarForm(1)">Generales</a>
+      <a class="nav-link active" href="#" onclick="generarForm(1)"><i class="fa fa-address-card" aria-hidden="true"></i></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#" onclick="validarEquipo()">Espesificos</a>
+      <a class="nav-link" href="#" onclick="validarEquipo(2)"><i class="fa fa-list-ol" aria-hidden="true"></i></a>
     </li> 
-  </ul>
-  <div class="custom-file mt-2 mb-2">
-  <input type="file" name="foto" class="custom-file-input custom-file-input-sm mb-2" id="customFile">
-  <label class="custom-file-label" for="customFile">Imagen</label>
-  </div>
+    <li class="nav-item">
+    <a class="nav-link" href="#" onclick="validarEquipo(3)"><i class="fa fa-camera" aria-hidden="true"></i></a>
+   </li> 
+
+  </ul>  
   <input type="text" id="descripcion" name="descripcion" class="form-control form-control-sm" placeholder="•	Descripción">
   <input type="text" id="serial" name="serial" class="form-control form-control-sm" placeholder="•	Serial ">
   <input type="text" id="marca" name="marca" class="form-control form-control-sm" placeholder="•	Marca">
@@ -249,36 +288,66 @@ function generarForm(opt){
 generales=` <div class="container m-2">
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link " href="#" onclick="generarForm(1)" >Generales</a>
+  <a class="nav-link " href="#" onclick="generarForm(1)"><i class="fa fa-address-card" aria-hidden="true"></i></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link active" href="#" onclick="validarEquipo()">Espesificos</a>
+  <a class="nav-link active" href="#" onclick="validarEquipo(2)"><i class="fa fa-list-ol" aria-hidden="true"></i></a>
   </li> 
+  <li class="nav-item">
+  <a class="nav-link" href="#" onclick="validarEquipo(3)"><i class="fa fa-camera" aria-hidden="true"></i></a>
+  </li>
 </ul>
 </div>`;
 
+photo=`
+<div class="container m-2">
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+  <a class="nav-link " href="#" onclick="generarForm(1)"><i class="fa fa-address-card" aria-hidden="true"></i></a>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link" href="#" onclick="validarEquipo(2)"><i class="fa fa-list-ol" aria-hidden="true"></i></a>
+  </li> 
+  <li class="nav-item">
+  <a class="nav-link active" href="#" onclick="validarEquipo(3)"><i class="fa fa-camera" aria-hidden="true"></i></a>
+  </li>
+</ul>
+</div>
+    <div class="custom-file mt-2 mb-2">
+    <input type="file" name="foto" id="foto" class="custom-file-input custom-file-input-sm mb-2" id="customFile">
+    <label class="custom-file-label" for="customFile">Imagen</label>
+    </div>
+    <div class="form-group">
+      <botton class="btn btn-success btn-block" onclick="cargarimagen()" ><i class="fa fa-upload" aria-hidden="true"></i>Subir</botton>
+    </div>
+`;
 
-if (opt==1) {
-  if($('#tipo').val()!=""){
-  $('#form').html(espesificos);
-  selectProveedor();
-  }else{
-    swal('Error', 'Debe Seleccionar Un Producto', 'warning');
-  }
-}else{
-  $.ajax({
-    method: 'POST',
-    url: 'controller/formulariosController.php',
-    data:{
-      tipo:$('#tipo').val()
-    }, 
-    success: function(res){
-      $('#form').html(generales+res);
+
+  if (opt==1) {
+    if($('#tipo').val()!=""){
+    $('#form').html(espesificos);
+    selectProveedor();
+    }else{
+      swal('Error', 'Debe Seleccionar Un Producto', 'warning');
     }
-  });
-  
-
-}
+  }else if(opt==2){
+    if($('#tipo').val()!=""){
+    $.ajax({
+      method: 'POST',
+      url: 'controller/formulariosController.php',
+      data:{
+        tipo:$('#tipo').val()
+      }, 
+      success: function(res){
+        $('#form').html(generales+res);
+      }
+    }); 
+  }
+  }else{
+    if($('#tipo').val()!=""){
+    $('#form').html(photo);
+    }
+  }
 
 }
 

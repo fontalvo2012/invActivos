@@ -57,7 +57,26 @@
       parent::cerrar();
     }
 
+    
+  public function selectEquipos()
+  {
+    parent::conectar();
+    $consulta = 'select id,nombre from equipos';
+    $select = parent::selectItem($consulta,"tipo");
+    echo $select;      
+    parent::cerrar();
   }
+
+
+  public function UpdateImg($imagen,$codigo){
+    parent::conectar();
+    $sql="UPDATE activos SET Imagen='".$imagen."' WHERE Codigo='".$codigo."'";
+    parent::query($sql); 
+    echo $sql;     
+    parent::cerrar();
+  }
+  }
+
 
 
 ?>

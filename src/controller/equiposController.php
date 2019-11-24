@@ -36,6 +36,9 @@
         $costo=$_POST['costo'];
         $equipo->registroEquipo($nombre,$codigo,$descripcion,$serial,$marca,$modelo,$dependencia,$dueno,$sede,$fcompra,$responsable,$proveedor,$estado,$costo);       
         break;
+    case '4':
+      $equipo->selectEquipos();     
+      break;
         
     default:
       echo "Registro default";
