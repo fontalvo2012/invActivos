@@ -23,7 +23,7 @@
     {
       parent::conectar();
       $consulta = 'select NIT,nombre from proveedores';
-      $select = parent::selectItem($consulta,$campo);
+      $select = parent::selectItem($consulta,$campo,"");
       echo $select;      
       parent::cerrar();
     }

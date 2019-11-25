@@ -27,6 +27,7 @@
   </li>  
     </ul>
 </div>
+
 <div class="row" id="load" hidden="hidden">
   <div class="col-xs-4 col-xs-offset-4 col-md-2 col-md-offset-5">
     <img src="img/load.gif" width="100%" alt="">

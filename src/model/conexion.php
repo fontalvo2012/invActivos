@@ -34,11 +34,11 @@
           return $this->mysqli->query($consulta);
         }
 
-        public function selectItem($consulta,$nombre){          
+        public function selectItem($consulta,$nombre,$funcion){          
           if ($resultado = $this->mysqli->query($consulta)) {
               /* obtener el array de objetos */
             
-            $cadena="<select name='".$nombre."' id='".$nombre."' class='custom-select custom-select-sm'>
+            $cadena="<select name='".$nombre."' id='".$nombre."' onchange='".$funcion."' class='custom-select custom-select-sm'>
                      <option value=''>::Seleccionar ".$nombre."::.</option>  
                      ";
             while ($fila = $resultado->fetch_row()) {

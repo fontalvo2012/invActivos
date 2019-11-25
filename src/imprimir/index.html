@@ -15,27 +15,46 @@
 			});
 		}
 		function crearContenedores(){
+			var abreviacion=$('#abrev').val();
 			var cadena='';
-			var num=0;
+			var num='';
+			var codigo='';
 			for (var i = 0; i < 56; i++) {								
-				
+				if(i<10){
+					codigo='000'+i;
+				}else if(i<100){	
+					codigo='00'+i;	
+				}else{
+					codigo='0'+i;
+				}	
+				num=abreviacion+codigo;
 				cadena+=`
 						<div class="c" style="border:solid;">		
 							<div class="contenedor">
 								<div id="c${i}"></div>
-								<h5 class="j">ES-000${num}</h5>
+								<h5 class="j">${num}</h5>
 							</div>
 						</div> <br>`;	
-						console.log('ES-000'+(num),'c'+i);						
-						num++;
+						console.log(num,'c'+i);//AQUI						
+						
 			}
 				$('#g').html(cadena);				
 		}
 		function crearCodigos(){
+			var abreviacion=$('#abrev').val();
 			var cadena='';
+			var codigo='';
 			var num=0;
-			for (var i = 0; i < 56; i++) {				
-				prueba('ES-000'+(num++),'c'+i);					
+			for (var i = 0; i < 56; i++) {
+				if(i<10){
+					codigo='000'+i;
+				}else if(i<100){	
+					codigo='00'+i;	
+				}else{
+					codigo='0'+i;
+				}
+				console.log(codigo);			
+				prueba(abreviacion+codigo,'c'+i);	//AQUI				
 			}								
 		}		 
 	</script>
@@ -55,8 +74,10 @@
 </head>
 <body>
 	<table>
-		<tr>			
-			<td><button onclick=" crearContenedores(); crearCodigos();">Codigos</button></td>
+		
+		<tr>
+			<td><input type="text" id="abrev"></td>			
+			<td><button onclick=" crearContenedores();crearCodigos();">Codigos</button></td>
 		</tr>
 	</table>
 
@@ -67,3 +88,4 @@
 	
 </body>
 </html>
+

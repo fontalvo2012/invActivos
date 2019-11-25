@@ -16,8 +16,9 @@
     <link rel="stylesheet" href="../css/font-awesome.min.css"> 
     <link rel="stylesheet" href="../css/sweetalert.css"> 
     <link rel="stylesheet" href="../css/style.css">
-
+    <script src="js/formularios.js"></script>
     <script src="js/funciones.js"></script>
+    
   </head>
 
   <body>

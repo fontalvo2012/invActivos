@@ -110,6 +110,37 @@ function selectDueno(){
   });
 }
 
+function consultarActivo(){    
+  var codigo=$('#qrcode').val();
+  $.ajax({
+    method: 'POST',
+    url: 'controller/consultarActivoController.php',      
+    data: {      
+      codigo:codigo
+    },
+    success: function(res){
+      if(res!="Error_2"){
+        var activo = JSON.parse(res);
+        console.log(activo[0]);
+        $('#tipo').val(activo[0].nombre);
+        $('#descripcion').val(activo[0].descripcion);
+        $('#serial').val(activo[0].serial);
+        $('#marca').val(activo[0].marca);
+        $('#modelo').val(activo[0].model);
+        $('#dependencia').val(activo[0].dependencia);
+        $('#dueno').val(activo[0].dueno);
+        $('#sede').val(activo[0].sede);
+        $('#fcompra').val(activo[0].fcompra);
+        $('#responsable').val(activo[0].responsable);
+        $('#proveedor').val(activo[0].proveedor);
+        $('#estado').val(activo[0].estado);
+        $('#costo').val(activo[0].costo);  
+      }
+    
+    }
+  });
+}
+
 function cargarimagen(){
   var codigo=$('#qrcode');
   var file_data = $('#foto').prop('files')[0];   
@@ -143,38 +174,41 @@ function cargarimagen(){
 }
 
 function registrarEquipo(){  
-  codigo=$('#qrcode').val();  
-  $.ajax({
-    method: 'POST',
-    url: 'controller/equiposController.php',
-    data: {    
-      op:'3',
-      eq:codigo,
-      nombre:$('#tipo').val(),
-      descripcion:$('#descripcion').val(),
-      serial:$('#serial').val(),
-      marca:$('#marca').val(),
-      modelo:$('#modelo').val(),
-      dependencia:$('#dependencia').val(),
-      dueno:$('#dueno').val(),
-      sede:$('#sede').val(),
-      fcompra:$('#fcompra').val(),
-      responsable:$('#responsable').val(),
-      proveedor:$('#proveedor').val(),
-      estado:$('#estado').val(),
-      costo:$('#costo').val()
-    },    
-    success: function(res){
-      if(res == 'Error_2'){
-        swal('Alvertencia', 'El Codigo ya existe', 'warning');        
-      }else{
-        window.location.href = res ;
-      }   
-    }
-  });
+  codigo=$('#qrcode').val();
+  if($('#tipo').val()!=""){  
+    $.ajax({
+      method: 'POST',
+      url: 'controller/equiposController.php',
+      data: {    
+        op:'3',
+        eq:codigo,
+        nombre:$('#tipo').val(),
+        descripcion:$('#descripcion').val(),
+        serial:$('#serial').val(),
+        marca:$('#marca').val(),
+        modelo:$('#modelo').val(),
+        dependencia:$('#dependencia').val(),
+        dueno:$('#dueno').val(),
+        sede:$('#sede').val(),
+        fcompra:$('#fcompra').val(),
+        responsable:$('#responsable').val(),
+        proveedor:$('#proveedor').val(),
+        estado:$('#estado').val(),
+        costo:$('#costo').val()
+      },    
+      success: function(res){
+        if(res == 'error_3'){
+          swal('Alvertencia', 'El Codigo ya existe', 'warning');        
+        }else{
+          window.location.href = res ;
+        }   
+      }
+    });
+  }else{
+    swal('Alvertencia', 'Seleccione un Tipo de equipo', 'warning');        
+  }
 }
 
-//Consulta por el codigo del equipo y muestra los los botones si existe o no el producto.
 function ConsultarEquipo(codigo){  
   $.ajax({
     method: 'POST',
@@ -235,9 +269,45 @@ function selectEquipo(){
       op:'4'
     },    
     success: function(res){ 
-      console.log(res);  
+       
       $('#t').html(res);
 
+    }
+  });
+}   
+
+function registraEspesifico(){ 
+  $.ajax({
+    method: 'POST',
+    url: 'controller/espesificosController.php',
+    data:{     
+      op:'4',
+      tipo:$('#tipo').val(),
+      codigo:$('#qrcode').val(),
+      procesador:$('#procesador').val(),
+      dicoduro:$('#dicoduro').val(),
+      memoria:$('#memoria').val(),
+      ip:$('#ip').val(),
+      mac:$('#mac').val(),
+      tipo:$('#tipo').val(),
+      fm:$('#fm').val(),
+      pulgadas:$('#pulgadas').val(),
+      referenca:$('#referenca').val(),
+      rpm:$('#rpm').val(),
+      ntubos:$('#ntubos').val(),
+      ncasete:$('#ncasete').val(),
+      ncanastillas:$('#ncanastillas').val(),
+      capacidad:$('#capacidad').val(),
+      tmax:$('#tmax').val(),
+      tmin:$('#tmin').val(),
+      tipooculares:$('#tipooculares').val(),
+      tipoluz:$('#tipoluz').val()
+    },    
+    success: function(res){ 
+      console.log(res);
+      if(res=='success'){
+        swal('Informacion','Datos Guardados','success');
+      }
     }
   });
 }    
@@ -273,7 +343,7 @@ function generarForm(opt){
   <div class="container m-2">
   <ul class="nav nav-tabs">
     <li class="nav-item">
-      <a class="nav-link active" href="#" onclick="generarForm(1)"><i class="fa fa-address-card" aria-hidden="true"></i></a>
+      <a class="nav-link active" href="#" onclick="generarForm(1);"><i class="fa fa-address-card" aria-hidden="true"></i></a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#" onclick="validarEquipo(2)"><i class="fa fa-list-ol" aria-hidden="true"></i></a>
@@ -315,16 +385,17 @@ function generarForm(opt){
   </div>  
   `;
 
-generales=` <div class="container m-2">
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-  <a class="nav-link " href="#" onclick="generarForm(1)"><i class="fa fa-address-card" aria-hidden="true"></i></a>
-  </li>
-  <li class="nav-item">
-  <a class="nav-link active" href="#" onclick="validarEquipo(2)"><i class="fa fa-list-ol" aria-hidden="true"></i></a>
-  </li> 
-  <li class="nav-item">
-  <a class="nav-link" href="#" onclick="validarEquipo(3)"><i class="fa fa-camera" aria-hidden="true"></i></a>
+generales=
+`<div class="container m-2">
+ <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link " href="#" onclick="generarForm(1);"><i class="fa fa-address-card" aria-hidden="true"></i></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="#" onclick="validarEquipo(2)"><i class="fa fa-list-ol" aria-hidden="true"></i></a>
+    </li> 
+    <li class="nav-item">
+     <a class="nav-link" href="#" onclick="validarEquipo(3)"><i class="fa fa-camera" aria-hidden="true"></i></a>
   </li>
 </ul>
 </div>`;
@@ -333,7 +404,7 @@ photo=`
 <div class="container m-2">
 <ul class="nav nav-tabs">
   <li class="nav-item">
-  <a class="nav-link " href="#" onclick="generarForm(1)"><i class="fa fa-address-card" aria-hidden="true"></i></a>
+  <a class="nav-link " href="#" onclick="generarForm(1);"><i class="fa fa-address-card" aria-hidden="true"></i></a>
   </li>
   <li class="nav-item">
   <a class="nav-link" href="#" onclick="validarEquipo(2)"><i class="fa fa-list-ol" aria-hidden="true"></i></a>
@@ -348,36 +419,28 @@ photo=`
     <label class="custom-file-label" for="customFile">Imagen</label>
     </div>
     <div class="form-group">
-      <botton class="btn btn-success btn-block" onclick="cargarimagen()" ><i class="fa fa-upload" aria-hidden="true"></i>Subir</botton>
+      <botton class="btn btn-success btn-block" onclick="cargarimagen()" ><i class="fa fa-upload" aria-hidden="true"></i> Subir</botton>
     </div>
 `;
-
-
   if (opt==1) {
     if($('#tipo').val()!=""){
     $('#form').html(espesificos);
     selectProveedor();
     selectDueno();
+    consultarActivo()
     }else{
       swal('Error', 'Debe Seleccionar Un Producto', 'warning');
     }
   }else if(opt==2){
     if($('#tipo').val()!=""){
-    $.ajax({
-      method: 'POST',
-      url: 'controller/formulariosController.php',
-      data:{
-        tipo:$('#tipo').val()
-      }, 
-      success: function(res){
-        $('#form').html(generales+res);
-      }
-    }); 
-  }
-  }else{
-    if($('#tipo').val()!=""){
-    $('#form').html(photo);
+      formularios();
     }
+  }else if(opt==3){
+    if($('#tipo').val()!=""){
+      $('#form').html(photo);
+    }
+  }else{
+    $('#form').html(espesificos);
   }
 
 }
