@@ -19,11 +19,11 @@
       parent::cerrar();
     }
 
-    public function select()
+    public function select($campo)
     {
       parent::conectar();
       $consulta = 'select NIT,nombre from proveedores';
-      $select = parent::selectItem($consulta,"proveedor");
+      $select = parent::selectItem($consulta,$campo);
       echo $select;      
       parent::cerrar();
     }

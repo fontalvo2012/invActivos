@@ -96,6 +96,20 @@ function selectProveedor(){
   });
 }
 
+function selectDueno(){    
+  $.ajax({
+    method: 'POST',
+    url: 'controller/proveedorController.php',
+    data: {      
+      opcion:'dueno'
+    },
+    success: function(res){
+      console.log(res);
+      $('#dueno').html(res);
+    }
+  });
+}
+
 function cargarimagen(){
   var codigo=$('#qrcode');
   var file_data = $('#foto').prop('files')[0];   
@@ -274,7 +288,7 @@ function generarForm(opt){
   <input type="text" id="marca" name="marca" class="form-control form-control-sm" placeholder="•	Marca">
   <input type="text" id="modelo" name="modelo" class="form-control form-control-sm" placeholder="•	Modelo">
   <input type="text" id="dependencia" name="dependencia" class="form-control form-control-sm" placeholder="•	Dependencia">
-  <input type="text" id="dueno" name="dueno" class="form-control form-control-sm" placeholder="•	Dueño  ">
+  <div id="dueno"></div>
   <select name="sede" id="sede" class="custom-select custom-select-sm">
   <option selected>.::Sede::.</option>
   <option value="bocagrande">Bocagrande</option>
@@ -343,6 +357,7 @@ photo=`
     if($('#tipo').val()!=""){
     $('#form').html(espesificos);
     selectProveedor();
+    selectDueno();
     }else{
       swal('Error', 'Debe Seleccionar Un Producto', 'warning');
     }
