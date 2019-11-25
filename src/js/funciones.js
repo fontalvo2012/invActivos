@@ -111,9 +111,19 @@ function cargarimagen(){
     processData: false,
     data: form_data,                         
     type: 'post',
+    beforeSend: function(){
+      $('#load').show();
+    },
     success: function(res){
+      $('#load').hide();
+      if(res =="error_1"){
+        swal('Error', 'Seleccionar una imagen', 'warning');
+      }else{
         console.log(res);
         swal('Info', 'Imagen Subida', 'success');
+      }
+        
+        
     }
  });
 }
@@ -271,7 +281,12 @@ function generarForm(opt){
   <option value="ejecutivos">Ejecutivos</option>
   <option value="amberes">Amberes</option>
    </select>
-  <input type="date" id="fcompra" name="fcompra" class="form-control form-control-sm">
+   <div class="input-group">
+   <div class="input-group-prepend">
+     <span class="input-group-text" id="basic-addon1">F.Compra</span>
+   </div>
+   <input type="date" id="fcompra" name="fcompra" class="form-control">   
+ </div>
   <input type="text" id="responsable" name="responsable" class="form-control form-control-sm" placeholder="•	Responsable">
   <select name="estado" id="estado" class="custom-select custom-select-sm">
   <option selected>.::Estado::.</option>
