@@ -192,13 +192,14 @@ function validarEquipo(t){
       if(res == 'Error_2'){
         swal('Alvertencia', 'Campos obligatorios, por favor llenarlos', 'warning');
         generarForm(1);
-      } 
+      }else{ 
       if(t==2){
         generarForm(2);
       }
       if(t==3){
         generarForm(3);
       }
+    }
     }
   });
 }    
