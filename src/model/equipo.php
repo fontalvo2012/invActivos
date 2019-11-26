@@ -97,7 +97,8 @@
          "tipo"=>$equipo['tipo'],
          "creacion"=>$equipo['creacion'],
          "fmantenimiento"=>$equipo['fmantenimiento'],
-         "costo"=>$equipo['costo']
+         "costo"=>$equipo['costo'],
+         "mac"=>$equipo['DireccionMAC']
 
        );
         echo  json_encode($array);     

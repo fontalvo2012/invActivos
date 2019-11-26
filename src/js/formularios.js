@@ -34,10 +34,11 @@ function formularios(){
                         <input type='text' id='mac' class='form-control form-control-sm'  placeholder='Direccion Mac'>                       
                     </div>
                     <div class='form-group'>
-                        <select id="tipo" class='form-control form-control-sm' >
-                            <option value="">::Seleccion Tipo::</option>
+                        <select id="tipo2" class='form-control form-control-sm' >
+                            <option value="">::Seleccion tipo2::</option>
                             <option value="server">Server</option>
                             <option value="todo en uno">Todo En Uno</option>
+                            <option value="portatil">Portatil </option>
                             <option value="torre">Torre</option>
                         </select>
                     </div>
@@ -67,7 +68,7 @@ function formularios(){
                 $('#form').html(menu+`
                 <div class='container'>
                 <div class='form-group'>
-                    <select id="tipo" class='form-control form-control-sm' >
+                    <select id="tipo2" class='form-control form-control-sm' >
                         <option value="">::Seleccion impresora::</option>
                         <option value="tinta">Tinta</option>
                         <option value="toner en uno">Toner</option>
@@ -99,8 +100,8 @@ function formularios(){
                     <input type='number' id='ntubos' class='form-control form-control-sm' placeholder="Nro Tubos">                       
                 </div>
                 <div class='form-group'>                    
-                    <select id="tipo" class='form-control form-control-sm' >
-                        <option value="">::Tipo ::</option>
+                    <select id="tipo2" class='form-control form-control-sm' >
+                        <option value="">::tipo2 ::</option>
                         <option value="digital">Digital</option>
                         <option value="manual en uno">Manual</option>                       
                     </select>
@@ -247,15 +248,15 @@ function formularios(){
                 $('#form').html(menu+` 
                 <div class='container'>
                     <div class='form-group'>
-                        <select id="tipooculares" class='form-control form-control-sm' >
-                            <option value="">::Tipo Oculares ::</option>
+                        <select id="tipo2oculares" class='form-control form-control-sm' >
+                            <option value="">::tipo2 Oculares ::</option>
                             <option value="fijos">Fijos</option>
                             <option value="movibles">Movibles</option>                       
                         </select>
                     </div> 
                 <div class='form-group'>
-                    <select id="tipoluz" class='form-control form-control-sm' >
-                        <option value="">::Tipo Luz ::</option>
+                    <select id="tipo2luz" class='form-control form-control-sm' >
+                        <option value="">::tipo2 Luz ::</option>
                         <option value="led">Led</option>
                         <option value="alogena">Alogena</option>                       
                     </select>

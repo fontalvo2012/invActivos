@@ -121,8 +121,10 @@ function consultarActivo(){
     success: function(res){
       if(res!="Error_2"){
         var activo = JSON.parse(res);
-        console.log(activo[0]);
-        $('#tipo').val(activo[0].nombre);
+        console.log(activo[0]);        
+        $('#tipo').hide();
+        $('#nombre').show();
+        $('#nombre').html(activo[0].nombre);
         $('#descripcion').val(activo[0].descripcion);
         $('#serial').val(activo[0].serial);
         $('#marca').val(activo[0].marca);
@@ -134,7 +136,16 @@ function consultarActivo(){
         $('#responsable').val(activo[0].responsable);
         $('#proveedor').val(activo[0].proveedor);
         $('#estado').val(activo[0].estado);
-        $('#costo').val(activo[0].costo);  
+        $('#costo').val(activo[0].costo);
+        $('#procesador').val(activo[0].procesador);
+        $('#dicoduro').val(activo[0].disco);
+        $('#memoria').val(activo[0].ram);
+        $('#ip').val(activo[0].ip);
+        $('#mac').val(activo[0].mac);
+        $('#fm').val(activo[0].fmantenimiento);
+        $('#tipo2').val(activo[0].tipo);
+        $('#img').html(activo[0].imagen)
+
       }
     
     }
@@ -164,7 +175,7 @@ function cargarimagen(){
       if(res =="error_1"){
         swal('Error', 'Seleccionar una imagen', 'warning');
       }else{
-        console.log(res);
+        //console.log(res);
         swal('Info', 'Imagen Subida', 'success');
       }
         
@@ -248,7 +259,7 @@ function validarEquipo(t){
     success: function(res){ 
       //prompt("datos",res);
       if(res == 'Error_2'){
-        swal('Alvertencia', 'Campos obligatorios, por favor llenarlos', 'warning');
+        swal('Alvertencia', 'Debe registrar los datos generales', 'warning');
         generarForm(1);
       }else{ 
       if(t==2){
@@ -282,14 +293,14 @@ function registraEspesifico(){
     url: 'controller/espesificosController.php',
     data:{     
       op:'4',
-      tipo:$('#tipo').val(),
+      nombre:$('#tipo').val(),
       codigo:$('#qrcode').val(),
       procesador:$('#procesador').val(),
       dicoduro:$('#dicoduro').val(),
       memoria:$('#memoria').val(),
       ip:$('#ip').val(),
       mac:$('#mac').val(),
-      tipo:$('#tipo').val(),
+      tipo:$('#tipo2').val(),
       fm:$('#fm').val(),
       pulgadas:$('#pulgadas').val(),
       referenca:$('#referenca').val(),
@@ -307,6 +318,8 @@ function registraEspesifico(){
       console.log(res);
       if(res=='success'){
         swal('Informacion','Datos Guardados','success');
+      }else{
+         console.log('Error');
       }
     }
   });
@@ -416,7 +429,7 @@ photo=`
 </div>
     <div class="custom-file mt-2 mb-2">
     <input type="file" name="foto" id="foto" class="custom-file-input custom-file-input-sm mb-2" id="customFile">
-    <label class="custom-file-label" for="customFile">Imagen</label>
+    <label class="custom-file-label" for="customFile" id="img">Imagen</label>
     </div>
     <div class="form-group">
       <botton class="btn btn-success btn-block" onclick="cargarimagen()" ><i class="fa fa-upload" aria-hidden="true"></i> Subir</botton>
@@ -434,10 +447,12 @@ photo=`
   }else if(opt==2){
     if($('#tipo').val()!=""){
       formularios();
+      consultarActivo()
     }
   }else if(opt==3){
     if($('#tipo').val()!=""){
       $('#form').html(photo);
+      consultarActivo()
     }
   }else{
     $('#form').html(espesificos);

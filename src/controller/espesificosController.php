@@ -4,7 +4,7 @@
     @$memoria=$_POST['memoria'];
     @$ip=$_POST['ip'];
     @$mac=$_POST['mac'];
-    @$tipo=$_POST['tipo'];
+    @$nombre=$_POST['nombre'];
     @$fm=$_POST['fm'];
     @$pulgadas=$_POST['pulgadas'];
     @$referenca=$_POST['referenca'];
@@ -22,7 +22,7 @@
     require_once('../model/equipo.php');      
     $equipo = new Equipo();
 
-    switch ($tipo) {
+    switch ($nombre) {
         case 'CPU':
             $sql="UPDATE activos 
             SET 
@@ -38,7 +38,7 @@
             echo 'success';
             break;        
         default:
-            # code...
+           echo 'Entro por default';
             break;
     }
 

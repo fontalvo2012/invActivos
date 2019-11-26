@@ -1,6 +1,6 @@
 <script>
   $( document ).ready(function() {
-    console.log( "ready!" );
+   $('#nombre').hide();
     selectEquipo();
 });
 </script>
@@ -10,11 +10,14 @@
 <div class="container" id="t" > 
 <select name="activo" id="tipo" class="custom-select custom-select-sm">
 <option value="">.:Seleccione:.</option>
-    <option value="CPU">CPU</option>
-     </select>
-     
+<option value="CPU">CPU</option>
+</select>     
+</div>
+<div class="container mt-2">
+<div id="nombre" class="form-control"></div>
 </div>
 <div id="form" class="container m-2">
+
   <ul class="nav nav-tabs">
       <li class="nav-item">
         <a class="nav-link active" href="#" onclick="generarForm(1)"><i class="fa fa-address-card" aria-hidden="true"></i></a>
