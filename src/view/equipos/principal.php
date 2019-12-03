@@ -1,7 +1,6 @@
 <script>
   $( document ).ready(function() {
-   $('#nombre').hide();
-    
+   $('#nombre').hide(); 
 });
 </script>
 <div class="alert alert-success">

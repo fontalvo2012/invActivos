@@ -26,14 +26,16 @@
       session_start();
       include('view/redirec.php');
       include('view/encabezados/menu.php');
-     
-
     ?>
       <div class="alert alert-primary m-2">
-        <div class="row">
+        <div class="row" id="busqueda">
           <div class="col ml-5 pr-0"><input type="text" id="qrcode" value="<?php echo @$_SESSION['cod']?>" class="form-control" name="qrcode"></div>
           <div class="col p-0"><button class="btn btn-warning m-0" onclick="ConsultarEquipoBoton()"><i class="fa fa-search" aria-hidden="true"></i></button></div>
         </div>
+        <div class="row ml-5" id="mcodigo">
+          <div class="col"><h3><?php echo "Codigo:".@$_SESSION['cod']?></h3></div>
+        </div>
+
       </div>
       
     <?php 

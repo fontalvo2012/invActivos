@@ -72,7 +72,7 @@
          "disco"=>$equipo['DiscoDuro'],
          "pulgadas"=>$equipo['pulgadas'],
          "recipiente"=>$equipo['recipiente'],
-         "canalesdvr"=>$equipo['canalesdvr'],
+         "canalesdvr"=>$equipo['canales'],
          "resolucion"=>$equipo['resolucion'],
          "puertos"=>$equipo['puertosethernet'],
          "velocidad"=>$equipo['velocidad'],
@@ -98,7 +98,8 @@
          "creacion"=>$equipo['creacion'],
          "fmantenimiento"=>$equipo['fmantenimiento'],
          "costo"=>$equipo['costo'],
-         "mac"=>$equipo['DireccionMAC']
+         "mac"=>$equipo['DireccionMAC'],
+         "pulgadas"=>$equipo['pulgadas']
 
        );
         echo  json_encode($array);     

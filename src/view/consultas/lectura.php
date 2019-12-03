@@ -1,3 +1,8 @@
+<script>
+  $( document ).ready(function() {
+    MostrarBusqueda();
+  });
+</script>
 <div class="container p-4"> 
         <div class="form-group"> 
             <button id="btqr" class="btn btn-success btn-block" onclick="IniciarCamara()"><span ><i class='fas fa-qrcode ml-2'  style='font-size:20px'></i></span>  Leer Codigo</button>

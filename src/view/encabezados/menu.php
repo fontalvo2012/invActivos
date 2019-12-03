@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Activos Upc</a>
+  <a class="navbar-brand" href="#">Activos. <span class="small ml-2 mr-3 text-danger text-uppercase">::<?php echo @$_SESSION['nombres'] ?>::</span></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -9,7 +9,7 @@
         <a class="nav-link" href="index.php"><i class="fa fa-home" aria-hidden="true"></i> Inicio <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="index.php?opt=lectura"><i class="fa fa-qrcode" aria-hidden="true"></i> Leer Activo</a>
+        <a class="nav-link"  href="index.php?opt=lectura"><i class="fa fa-qrcode" aria-hidden="true"></i> Leer Activo</a>
       </li>
       <li class="nav-item">
         <a class="nav-link"  href="index.php?opt=registro"><i class="fa fa-user-plus" aria-hidden="true"></i> Usuarios</a>

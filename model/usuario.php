@@ -95,6 +95,7 @@
         $_SESSION['id']     = $user['id'];
         $_SESSION['nombre'] = $user['nombre'];
         $_SESSION['cargo']  = $user['cargo'];
+        $_SESSION['nombres']  = $user['nombre'];
 
         /*
           Que porqué almacenamos cargo? es encillo en nuestros proyectos
@@ -117,9 +118,7 @@
         }else if($_SESSION['cargo'] == 2){
           echo 'src/index.php';
         }
-
-
-        // u.u finalizamos aqui :v
+                // u.u finalizamos aqui :v
 
       }else{
         // El usuario y la clave son incorrectos

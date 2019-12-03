@@ -61,9 +61,13 @@ function formularios(){
                 <div class='container'>
                     <div class='form-group'>
                         <input type='number' id='pulgadas' class='form-control form-control-sm'  placeholder='Pulgadas'>                       
-                    </div>                    
+                    </div>           
+                <div class='form-group'>
+                    <label>Siguiente Mantenimiento</label>
+                    <input type='date' id='fm' class='form-control form-control-sm'>                       
+                </div>             
                     <div class="form-group">
-                        <button class="btn btn-success btn-block"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Guardar</button>
+                        <button class="btn btn-success btn-block" onclick="registraEspesifico()"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Guardar</button>
                     </div>
                 </div>
             `); 
@@ -81,7 +85,7 @@ function formularios(){
                     </select>
                 </div>
                 <div class='form-group'>
-                    <input type='text' id='referenca' class='form-control form-control-sm'  placeholder='Ref Insumo'>                       
+                    <input type='text' id='referencia' class='form-control form-control-sm'  placeholder='Ref Insumo'>                       
                 </div>   
                 <div class='form-group'>
                     <label>Siguiente Mantenimiento</label>
@@ -91,6 +95,83 @@ function formularios(){
                 </div>
             `);           
             break;
+        case 'DVR':
+                $('#form').html(menu+`
+                <div class='container'>           
+                <div class='form-group'>
+                    <input type='text' id='ip' class='form-control form-control-sm'  placeholder='Direccion Ip'>                       
+                </div>
+                <div class='form-group'>
+                <input type='number' id='ncanales' class='form-control form-control-sm'  placeholder='Numero Canales'>                       
+                </div>
+                <div class='form-group'>
+                <select class='form-control form-control-sm' id='resolucion'>
+                    <option value=''>::Resolucion::</option>
+                    <option value='1024'>1024 px</option>
+                    <option value='720'>720 px</option>                    
+                </select>
+                </div>
+                <div class='form-group'>
+                    <label>Siguiente Mantenimiento</label>
+                    <input type='date' id='fm' class='form-control form-control-sm'>                       
+                </div>                  
+                ${boton}
+                </div>
+            `);           
+            break;
+            case 'SWICH':
+                $('#form').html(menu+`
+                <div class='container'>
+                <div class='form-group'>
+                <input type='number' id='ncanales' class='form-control form-control-sm'  placeholder='Numero Canales'>                       
+                </div>           
+                <div class='form-group'>
+                    <label>Siguiente Mantenimiento</label>
+                    <input type='date' id='fm' class='form-control form-control-sm'>                       
+                </div>                  
+                ${boton}
+                </div>
+            `);           
+            break;
+            case 'UPS':
+                $('#form').html(menu+`
+                <div class='container'>
+                <div class='form-group'>
+                <input type='number' id='kva' class='form-control form-control-sm'  placeholder='Numero Canales'>                       
+                </div> 
+                <div class='form-group'>
+                <input type='number' id='voltaje' class='form-control form-control-sm'  placeholder='Voltaje'>                       
+                </div>            
+                <div class='form-group'>
+                    <label>Siguiente Mantenimiento</label>
+                    <input type='date' id='fm' class='form-control form-control-sm'>                       
+                </div>                  
+                ${boton}
+                </div>
+            `);           
+            break;            
+            case 'RACK':
+                $('#form').html(menu+`
+                <div class='container'>
+                <div class='form-group'>
+                <input type='number' id='nrou' class='form-control form-control-sm'  placeholder='Numero U'>                       
+                </div> 
+                <div class='form-group'>
+                <select class='form-control form-control-sm' id='tipo2'>
+                    <option value=''>::Rack::</option>
+                    <option value='abierto'>Abierto</option>
+                    <option value='cerrado'>Cerrado</option>                    
+                </select>
+                </div>            
+                <div class='form-group'>
+                    <label>Siguiente Mantenimiento</label>
+                    <input type='date' id='fm' class='form-control form-control-sm'>                       
+                </div>                  
+                ${boton}
+                </div>
+            `);           
+            break;
+
             //BIOMEDICOS
         case 'CENTRIFUGA':
             $('#form').html(menu+` 

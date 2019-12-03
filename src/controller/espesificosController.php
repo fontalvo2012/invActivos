@@ -19,6 +19,13 @@
     @$tipoluz=$_POST['tipoluz'];
     @$tipo=$_POST['tipo'];
     @$codigo=$_POST['codigo'];
+    @$ncanales=$_POST['ncanales'];
+    @$referencia=$_POST['referencia'];
+    @$resolucion=$_POST['resolucion'];
+    @$kva=$_POST['kva'];
+    @$voltaje=$_POST['voltaje'];
+    @$nrou=$_POST['nrou'];
+
     require_once('../model/equipo.php');      
     $equipo = new Equipo();
 
@@ -39,6 +46,31 @@
             break;   
         case 'CENTRIFUGA':
             $sql="UPDATE activos SET rpm =$rpm,nrotubos=$ntubos,tipo='$tipo',fmantenimiento='$fm' WHERE codigo='$codigo'";
+            $equipo->ingresarActivo($sql);           
+            echo 'success';
+            break;
+        case 'MONITOR':
+            $sql="UPDATE activos SET pulgadas = $pulgadas,fmantenimiento = '$fm' WHERE codigo='$codigo'";
+            $equipo->ingresarActivo($sql);           
+            echo 'success';
+            break;
+        case 'IMPRESORA':
+            $sql="UPDATE activos SET tipo = '$tipo',referencia = '$referencia',fmantenimiento = '$fm' WHERE codigo='$codigo'";
+            $equipo->ingresarActivo($sql);           
+            echo 'success';
+            break;
+        case 'SWICH':
+            $sql="UPDATE activos SET DireccionIP = '$ip',canales = $ncanales,fmantenimiento = '$fm' WHERE codigo='$codigo'";
+            $equipo->ingresarActivo($sql);           
+            echo 'success';
+            break;
+        case 'DVR':
+            $sql="UPDATE activos SET DireccionIP = '$ip',canales = $ncanales,resolicion = '$referencia',fmantenimiento = '$fm' WHERE codigo='$codigo'";
+            $equipo->ingresarActivo($sql);           
+            echo 'success';
+            break;
+        case 'RACK':
+            $sql="UPDATE activos SET tipo = '$tipo',nrou = $nrou,fmantenimiento = '$fm' WHERE codigo='$codigo'";
             $equipo->ingresarActivo($sql);           
             echo 'success';
             break;

@@ -10,6 +10,7 @@
            $('#d2').hide();
            $('#d3').hide();
            $('#d4').hide();
+           OcultarBusqueda();
          });
 
        function IniciarCamara(){
@@ -256,6 +257,7 @@ function consultarActivo(){
         $('#fm').val(activo[0].fmantenimiento);
         $('#tipo2').val(activo[0].tipo);
         $('#img').html(activo[0].imagen);
+        $('#pulgadas').html(activo[0].pulgadas);
       }
     
     }
@@ -389,8 +391,7 @@ function validarEquipo(t){
       eq:codigo,
       op:'2'
     },    
-    success: function(res){ 
-      //prompt("datos",res);
+    success: function(res){       
       if(res == 'Error_2'){
         swal('Alvertencia', 'Debe registrar los datos generales', 'warning');
         generarForm(1);
@@ -449,7 +450,13 @@ function registraEspesifico(){
       tmax:$('#tmax').val(),
       tmin:$('#tmin').val(),
       tipooculares:$('#tipooculares').val(),
-      tipoluz:$('#tipoluz').val()
+      tipoluz:$('#tipoluz').val(),
+      ncanales:$('#ncanales').val(),
+      referencia:$('#referencia').val(),
+      resolucion:$('#resolucion').val(),
+      kva:$('#kva').val(),
+      voltaje:$('#voltaje').val(),
+      nrou:$('#nrou').val()
     },    
     success: function(res){ 
       //console.log(res);
@@ -601,3 +608,13 @@ photo=`
 
 }
 
+
+
+function MostrarBusqueda(){
+  $("#busqueda").show();
+  $("#mcodigo").hide();
+}
+function OcultarBusqueda(){
+  $("#busqueda").hide();
+  $("#mcodigo").show();
+}
