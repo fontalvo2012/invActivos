@@ -109,6 +109,116 @@ function selectDueno(){
     }
   });
 }
+function consultarActivo2(){    
+  var codigo=$('#qrcode').val();
+  $.ajax({
+    method: 'POST',
+    url: 'controller/consultarActivoController.php',      
+    data: {      
+      codigo:codigo
+    },
+    success: function(res){
+      if(res!="Error_2"){
+        var activo = JSON.parse(res);
+        var f1= new Date(activo[0].fmantenimiento);
+        var f2= new Date();
+        let resta = f1.getTime() - f2.getTime()
+        var res=Math.round(resta/ (1000*60*60*24));
+        console.log(Math.round(resta/ (1000*60*60*24)))        
+         $('#imag').html(`<img src="file/${activo[0].imagen}" class="img-thumbnail">`);
+         $('#datos').html(`
+              <div id="accordion">
+              <div class="card">
+                <div class="card-header-sm " id="headingOne">
+                  <h5 class="mb-0">
+                    <button class="btn btn-warning btn-block" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      Datos Generales
+                    </button>
+                  </h5>
+                </div>            
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                  <div class="card-body m-1 small text-uppercase">
+
+                  <table >
+                      <tr>
+                        <td><b>Nombre: </b>${activo[0].nombre}</td>
+                        <td><b>marca: </b>${activo[0].marca}</td>                     
+                      </tr> 
+                      <tr>
+                        <td colspan="2"><b>Descrion: </b>${activo[0].descripcion}</td>                                            
+                      </tr> 
+                      <tr>
+                        <td><b>Serial:</b>${activo[0].serial}</td>
+                        <td><b>Modelo:</b>${activo[0].model}</td>                     
+                      </tr>
+                      <tr>                       
+                        <td colspan="2"><b>Dependencia:</b>${activo[0].dependencia}</td>                     
+                      </tr>
+                      <tr>                       
+                        <td colspan="2"><b>Sede:</b>${activo[0].sede}</td>                     
+                      </tr> 
+                      <tr>
+                      <td colspan="2"><b>Responsable:</b>${activo[0].responsable}</td>
+                                          
+                    </tr>                   
+                  </table>
+                                    
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header-sm" id="headingTwo">
+                  <h5 class="mb-0">
+                    <button class="btn btn-warning btn-block" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                     Datos Espesificos
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                  <div class="card-body small text-uppercase">
+                  <table >
+                  <tr>
+                    <td colspan="2"><b>Fecha Registro: </b>${activo[0].creacion}</td>                                   
+                  </tr> 
+                  <tr>
+                    <td colspan="2"><b>Costo: </b>${activo[0].costo}</td>                                            
+                  </tr>                 
+                  <tr>                       
+                    <td colspan="2"><b>Proximo Man. </b>${activo[0].fmantenimiento}</td>                     
+                  </tr>
+                  <tr>                       
+                    <td colspan="2"><b>Sede:</b>${activo[0].sede}</td>                     
+                  </tr> 
+                                  
+              </table>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header-sm" id="headingThree">
+                  <h5 class="mb-0">
+                    <button class="btn btn-warning btn-block" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      Proximo Mantenimiento..
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                  <div class="card-body small ">
+                   <table>
+                      <tr>
+                        <td colspan="2"><b>QUEDAN</b>  ${res} DIAS</td>
+                      </tr>
+                   </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+         `);
+      }
+    
+    }
+  });
+}
 
 function consultarActivo(){    
   var codigo=$('#qrcode').val();
@@ -144,8 +254,7 @@ function consultarActivo(){
         $('#mac').val(activo[0].mac);
         $('#fm').val(activo[0].fmantenimiento);
         $('#tipo2').val(activo[0].tipo);
-        $('#img').html(activo[0].imagen)
-
+        $('#img').html(activo[0].imagen);
       }
     
     }
@@ -177,13 +286,10 @@ function cargarimagen(){
       }else{
         //console.log(res);
         swal('Info', 'Imagen Subida', 'success');
-      }
-        
-        
+      }        
     }
  });
 }
-
 function registrarEquipo(){  
   codigo=$('#qrcode').val();
   if($('#tipo').val()!=""){  

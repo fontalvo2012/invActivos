@@ -19,10 +19,10 @@
           <a href="index.php?opt=equipos" class="btn btn-warning btn-block" id="d1"> Registrar Activo</a>
         </div>
         <div class="form-group">
-          <a href="" class="btn btn-warning btn-block" id="d2"> Dato 2</a>
+          <a href="index.php?opt=consultaequipos" class="btn btn-warning btn-block" id="d2"> Consultar</a>
         </div>
         <div class="form-group">
-          <a href="" class="btn btn-warning btn-block" id="d3"> Dato 3</a>
+          <a href="" class="btn btn-warning btn-block" id="d3"> Actualizar</a>
         </div>
         <div class="form-group">
           <a href="" class="btn btn-warning btn-block" id="d4"> Dato 4</a>

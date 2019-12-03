@@ -16,7 +16,9 @@ function redirec($opt){
         case 'proveedor':
             include('view/provedores/ingreso.php');
             break;      
-        
+        case 'consultaequipos':
+                include('view/equipos/consultasEquipos.php');
+                break; 
         default:
             # code...
             break;
