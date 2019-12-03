@@ -36,9 +36,92 @@
             WHERE codigo='$codigo'";
             $equipo->ingresarActivo($sql);
             echo 'success';
-            break;        
+            break;   
+        case 'CENTRIFUGA':
+            $sql="UPDATE activos SET rpm =$rpm,nrotubos=$ntubos,tipo='$tipo',fmantenimiento='$fm' WHERE codigo='$codigo'";
+            $equipo->ingresarActivo($sql);           
+            echo 'success';
+            break;
+        case 'EQUIPO DE OSCILACION':
+                $sql="UPDATE activos 
+                    SET rpm =$rpm,
+                    nrotubos=$ntubos,                   
+                    fmantenimiento='$fm' 
+                    WHERE codigo='$codigo'";
+                $equipo->ingresarActivo($sql);           
+                echo 'success';
+            break;
+        case 'PROCESADOR DE TEJIDOS':
+                $sql="UPDATE activos 
+                    SET nrocasette =$ncasete,
+                    nrocanastillas=$ncanastillas,                   
+                    fmantenimiento='$fm' 
+                    WHERE codigo='$codigo'";
+                $equipo->ingresarActivo($sql);           
+                echo 'success';
+            break;
+        case 'PIPETAS':
+            $sql="UPDATE activos 
+                SET capacidad=$capacidad,                 
+                fmantenimiento='$fm' 
+                WHERE codigo='$codigo'";
+            $equipo->ingresarActivo($sql);           
+            echo 'success';
+            break;     
+        case 'BALANZAS':
+                $sql="UPDATE activos 
+                    SET capacidad=$capacidad,                 
+                    fmantenimiento='$fm' 
+                    WHERE codigo='$codigo'";
+                $equipo->ingresarActivo($sql);           
+                echo 'success';
+            break;
+        case 'INCUBADORA':
+                $sql="UPDATE activos 
+                    SET tempmax=$tmax,                 
+                        tempmin=$tmin,
+                        capacidad=$capacidad,
+                        fmantenimiento='$fm'  
+                    WHERE codigo='$codigo'";
+                $equipo->ingresarActivo($sql);           
+                echo 'success';
+            break;   
+        case 'HORNO':
+                $sql="UPDATE activos 
+                    SET tempmax=$tmax,                 
+                        tempmin=$tmin,
+                        capacidad=$capacidad,
+                        fmantenimiento='$fm'  
+                    WHERE codigo='$codigo'";
+                $equipo->ingresarActivo($sql);           
+                echo 'success';
+            break;  
+        case 'CRIOSTATO':
+                $sql="UPDATE activos 
+                    SET tempmax=$tmax,                 
+                        tempmin=$tmin,
+                        capacidad=$capacidad,
+                        fmantenimiento='$fm'  
+                    WHERE codigo='$codigo'";
+                $equipo->ingresarActivo($sql);           
+                echo 'success';
+            break;
+        case 'MICROSCOPIO':
+            $sql="UPDATE activos 
+                SET tipoluz='$tipoluz',                 
+                    tipooculares='$tipooculares',
+                    fmantenimiento='$fm'                     
+                WHERE codigo='$codigo'";
+            $equipo->ingresarActivo($sql);           
+            echo 'success';
+            
+        break; 
         default:
-           echo 'Entro por default';
+            $sql="UPDATE activos 
+            SET fmantenimiento='$fm'
+            WHERE codigo='$codigo'";
+            $equipo->ingresarActivo($sql);
+            echo 'success';
             break;
     }
 

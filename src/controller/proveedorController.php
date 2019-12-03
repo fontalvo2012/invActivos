@@ -26,7 +26,7 @@
       $proveedor ->select("proveedor");
       break;
     case 'dueno':
-        $proveedor ->select("dueno");
+        $proveedor ->select("duenio");
         break;
     default:
       # code...

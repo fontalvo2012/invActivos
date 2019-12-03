@@ -125,8 +125,8 @@
       $estado=parent::filtrar($estado);
       $costo=parent::filtrar($costo);
 
-      $sql='insert into activos(Codigo,Nombre,Descripcion,Serial,Marca,Modelo,Dependencia,Dueno,Sede,fechacompra,Responsable,Estado,Proveedor,costo) 
-      values("'.$codigo.'","'.$nombre.'","'.$descripcion.'","'.$serial.'","'.$marca.'","'.$modelo.'","'.$dependencia.'","'.$dueno.'","'.$sede.'","'.$fcompra.'","'.$responsable.'","'.$estado.'","'.$proveedor.'","'.$costo.'")';
+      $sql='insert into activos(Codigo,Nombre,Imagen,Descripcion,Serial,Marca,Modelo,Dependencia,Dueno,Sede,fechacompra,Responsable,Estado,Proveedor,costo) 
+      values("'.$codigo.'","'.$nombre.'","default.png","'.$descripcion.'","'.$serial.'","'.$marca.'","'.$modelo.'","'.$dependencia.'","'.$dueno.'","'.$sede.'","'.$fcompra.'","'.$responsable.'","'.$estado.'","'.$proveedor.'","'.$costo.'")';
       $verificarCodigo = parent::verificarRegistros('select id from activos where codigo="'.$codigo.'"');
       if($verificarCodigo > 0){
         echo 'error_3';
@@ -141,10 +141,10 @@
       parent::query($sql);
       parent::cerrar();
     }
-  public function selectEquipos()
+  public function selectEquipos($tipo)
   {
     parent::conectar();
-    $consulta = 'select id,nombre from equipos ORDER BY nombre';
+    $consulta = 'select id,nombre from equipos WHERE tipo="'.$tipo.'" ORDER BY nombre';
     $select = parent::selectItem($consulta,"tipo","generarForm(4)");
     echo $select;      
     parent::cerrar();

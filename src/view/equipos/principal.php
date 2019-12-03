@@ -1,13 +1,21 @@
 <script>
   $( document ).ready(function() {
    $('#nombre').hide();
-    selectEquipo();
+    
 });
 </script>
 <div class="alert alert-success">
   <strong>Registro de Activos</strong> 
 </div>
-<div class="container" id="t" > 
+<div class="container mb-2">
+<select name="activo" id="dependencia" onchange="selectEquipo()"  class="custom-select custom-select-sm">
+    <option value="">.:Depedencia:.</option>
+    <option value="sistemas">Sistemas</option>
+    <option value="Biomedicos">Biomendicos</option>
+    <option value="Mantenimiento">Mantenimiento</option>
+  </select> 
+</div>
+<div class="container" id="t" >  
 <select name="activo" id="tipo" class="custom-select custom-select-sm">
 <option value="">.:Seleccione:.</option>
 <option value="CPU">CPU</option>

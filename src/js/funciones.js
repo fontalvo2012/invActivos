@@ -90,7 +90,7 @@ function selectProveedor(){
       opcion:'select'
     },
     success: function(res){
-      console.log(res);
+      //console.log(res);
       $('#select').html(res);
     }
   });
@@ -104,7 +104,7 @@ function selectDueno(){
       opcion:'dueno'
     },
     success: function(res){
-      console.log(res);
+     // console.log(res);
       $('#dueno').html(res);
     }
   });
@@ -233,13 +233,14 @@ function consultarActivo(){
         var activo = JSON.parse(res);
         console.log(activo[0]);        
         $('#tipo').hide();
+        $('#dependencia').hide();
         $('#nombre').show();
         $('#nombre').html(activo[0].nombre);
         $('#descripcion').val(activo[0].descripcion);
         $('#serial').val(activo[0].serial);
         $('#marca').val(activo[0].marca);
         $('#modelo').val(activo[0].model);
-        $('#dependencia').val(activo[0].dependencia);
+        $('#dep').val(activo[0].dependencia);
         $('#dueno').val(activo[0].dueno);
         $('#sede').val(activo[0].sede);
         $('#fcompra').val(activo[0].fcompra);
@@ -283,14 +284,14 @@ function cargarimagen(){
       $('#load').hide();
       if(res =="error_1"){
         swal('Error', 'Seleccionar una imagen', 'warning');
-      }else{
-        //console.log(res);
+      }else{       
         swal('Info', 'Imagen Subida', 'success');
+        window.location.href ="index.php?opt=lectura" ;
       }        
     }
  });
 }
-function registrarEquipo(){  
+function registrarEquipo(){    
   codigo=$('#qrcode').val();
   if($('#tipo').val()!=""){  
     $.ajax({
@@ -305,7 +306,7 @@ function registrarEquipo(){
         marca:$('#marca').val(),
         modelo:$('#modelo').val(),
         dependencia:$('#dependencia').val(),
-        dueno:$('#dueno').val(),
+        dueno:$('#duenio').val(),
         sede:$('#sede').val(),
         fcompra:$('#fcompra').val(),
         responsable:$('#responsable').val(),
@@ -317,7 +318,8 @@ function registrarEquipo(){
         if(res == 'error_3'){
           swal('Alvertencia', 'El Codigo ya existe', 'warning');        
         }else{
-          window.location.href = res ;
+          swal('Informacion', 'Equipo Registrado', 'success');  
+          generarForm(2);
         }   
       }
     });
@@ -326,7 +328,7 @@ function registrarEquipo(){
   }
 }
 
-function ConsultarEquipo(codigo){  
+function ConsultarEquipo(codigo){ 
   $.ajax({
     method: 'POST',
     url: 'controller/equiposController.php',
@@ -346,11 +348,36 @@ function ConsultarEquipo(codigo){
       }else{
         $('#d2').show(1400); 
         $('#d3').show(1600);
+        //$('#d4').show(1800);
+      }
+    }
+  });
+} 
+function ConsultarEquipoBoton(){ 
+  codigo=$('#qrcode').val();
+  $.ajax({
+    method: 'POST',
+    url: 'controller/equiposController.php',
+    data:{
+      eq:codigo,
+      op:'1'
+    }, 
+    beforeSend: function(){
+      $('#load').show();
+    },
+    success: function(res){
+      $('#load').hide();
+      sonar();    
+      if(res =='1000'){        
+        $('#d1').show(1200);              
+      }else{
+        $('#d2').show(1400); 
+        $('#d3').show(1600);
         $('#d4').show(1800);
       }
     }
   });
-}  
+}   
 
 //Valida el codigo del equipo
 function validarEquipo(t){
@@ -379,21 +406,25 @@ function validarEquipo(t){
   });
 }    
 function selectEquipo(){ 
+  var tipo= $('#dependencia').val();
+  console.log(tipo);
   $.ajax({
     method: 'POST',
     url: 'controller/equiposController.php',
     data:{     
-      op:'4'
+      op:'4',
+      tipo:tipo
     },    
-    success: function(res){ 
-       
+    success: function(res){        
       $('#t').html(res);
+      //console.log(res);
 
     }
   });
 }   
 
 function registraEspesifico(){ 
+ 
   $.ajax({
     method: 'POST',
     url: 'controller/espesificosController.php',
@@ -421,11 +452,12 @@ function registraEspesifico(){
       tipoluz:$('#tipoluz').val()
     },    
     success: function(res){ 
-      console.log(res);
+      //console.log(res);
       if(res=='success'){
         swal('Informacion','Datos Guardados','success');
+        generarForm(3);
       }else{
-         console.log('Error');
+         console.log(res);
       }
     }
   });
@@ -476,7 +508,7 @@ function generarForm(opt){
   <input type="text" id="serial" name="serial" class="form-control form-control-sm" placeholder="•	Serial ">
   <input type="text" id="marca" name="marca" class="form-control form-control-sm" placeholder="•	Marca">
   <input type="text" id="modelo" name="modelo" class="form-control form-control-sm" placeholder="•	Modelo">
-  <input type="text" id="dependencia" name="dependencia" class="form-control form-control-sm" placeholder="•	Dependencia">
+  <input type="text" id="dep" name="dependencia" class="form-control form-control-sm" placeholder="•	Dependencia">
   <div id="dueno"></div>
   <select name="sede" id="sede" class="custom-select custom-select-sm">
   <option selected>.::Sede::.</option>
@@ -497,7 +529,8 @@ function generarForm(opt){
   <option value="malo">En No condicion</option>  
    </select>
   <input type="text" id="costo" name="costo" class="form-control form-control-sm" placeholder="•	Costo">
-  <div id="select"></div>  
+  <div id="select">
+  </div>  
    <div class="form-group">
         <button class="btn btn-success btn-block mt-3" onclick="registrarEquipo()">Ingresar</button>
      </div>
@@ -561,6 +594,8 @@ photo=`
       consultarActivo()
     }
   }else{
+    selectProveedor();
+    selectDueno();
     $('#form').html(espesificos);
   }
 

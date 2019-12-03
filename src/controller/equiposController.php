@@ -2,6 +2,7 @@
   @$codigo = $_POST['eq'];
   @$opcion=$_POST['op'];
   @$nombre=$_POST['nombre'];
+  @$tipo=$_POST['tipo'];
   session_start();
   $_SESSION['cod']=$codigo;
   require_once('../model/equipo.php');      
@@ -37,7 +38,7 @@
         $equipo->registroEquipo($nombre,$codigo,$descripcion,$serial,$marca,$modelo,$dependencia,$dueno,$sede,$fcompra,$responsable,$proveedor,$estado,$costo);       
         break;
     case '4':
-      $equipo->selectEquipos();     
+      $equipo->selectEquipos($tipo);     
       break;
         
     default:

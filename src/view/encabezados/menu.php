@@ -6,26 +6,26 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="index.php">Inicio <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="index.php"><i class="fa fa-home" aria-hidden="true"></i> Inicio <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="index.php?opt=lectura">Leer Activo</a>
+        <a class="nav-link" href="index.php?opt=lectura"><i class="fa fa-qrcode" aria-hidden="true"></i> Leer Activo</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"  href="index.php?opt=registro">Registrar Usuarios</a>
+        <a class="nav-link"  href="index.php?opt=registro"><i class="fa fa-user-plus" aria-hidden="true"></i> Usuarios</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Registros
+        <i class="fa fa-plus" aria-hidden="true"></i> Registros
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="index.php?opt=proveedor">Proveedor</a>
+          <a class="dropdown-item" href="index.php?opt=proveedor"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Proveedor</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="index.php?opt=proveedor">Sedes</a>    
+          <a class="dropdown-item" href="index.php?opt=proveedor"><i class="fa fa-map-marker" aria-hidden="true"></i> Sedes</a>    
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link"  href="controller/cerrarSesion.php">Salir</a>
+        <a class="nav-link"  href="controller/cerrarSesion.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Salir</a>
       </li>
    
     </ul>

@@ -1,4 +1,8 @@
 function formularios(){
+    var boton=`  
+        <div class="form-group">
+            <button class="btn btn-success btn-block" onclick="registraEspesifico()"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Guardar</button>
+        </div>`;
     var tipo=$('#tipo').val();
     var menu=` <div class="container m-2">
     <ul class="nav nav-tabs">
@@ -47,8 +51,8 @@ function formularios(){
                         <input type='date' id='fm' class='form-control form-control-sm'>                       
                     </div> 
                     <div class="form-group">
-                        <button class="btn btn-success btn-block" onclick="registraEspesifico()"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Guardar</button>
-                    </div>
+                    <button class="btn btn-success btn-block" onclick="registraEspesifico()"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Guardar</button>
+                </div>
                 </div>
             `);            
             break;
@@ -83,9 +87,7 @@ function formularios(){
                     <label>Siguiente Mantenimiento</label>
                     <input type='date' id='fm' class='form-control form-control-sm'>                       
                 </div>                  
-                    <div class="form-group">
-                        <button class="btn btn-success btn-block"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Guardar</button>
-                    </div>
+                ${boton}
                 </div>
             `);           
             break;
@@ -111,8 +113,8 @@ function formularios(){
                     <input type='date' id='fm' class='form-control form-control-sm'>                       
                 </div>                    
                 <div class="form-group">
-                    <button class="btn btn-success btn-block"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Guardar</button>
-                </div>
+                <button class="btn btn-success btn-block" onclick="registraEspesifico()"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Guardar</button>
+            </div>
             </div>`);
             break;
         case 'EQUIPO DE OSCILACION':
@@ -129,7 +131,7 @@ function formularios(){
                         <input type='date' id='fm' class='form-control form-control-sm'>                       
                     </div>                    
                     <div class="form-group">
-                        <button class="btn btn-success btn-block"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Guardar</button>
+                        <button class="btn btn-success btn-block" onclick="registraEspesifico()"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Guardar</button>
                     </div>
                 </div>`);
             break;
@@ -147,7 +149,7 @@ function formularios(){
                         <input type='date' id='fm' class='form-control form-control-sm'>                       
                     </div>                    
                     <div class="form-group">
-                        <button class="btn btn-success btn-block"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Guardar</button>
+                        <button class="btn btn-success btn-block" onclick="registraEspesifico()"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Guardar</button>
                     </div>
                 </div>`);
             break;
@@ -162,7 +164,7 @@ function formularios(){
                         <input type='date' id='fm' class='form-control form-control-sm'>                       
                     </div>                    
                     <div class="form-group">
-                        <button class="btn btn-success btn-block"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Guardar</button>
+                        <button class="btn btn-success btn-block" onclick="registraEspesifico()"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Guardar</button>
                     </div>
                 </div>`);
             break;
@@ -177,7 +179,7 @@ function formularios(){
                             <input type='date' id='fm' class='form-control form-control-sm'>                       
                         </div>                    
                         <div class="form-group">
-                            <button class="btn btn-success btn-block"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Guardar</button>
+                            <button class="btn btn-success btn-block" onclick="registraEspesifico()"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Guardar</button>
                         </div>
                     </div>`);
                 break;
@@ -198,7 +200,7 @@ function formularios(){
                         <input type='date' id='fm' class='form-control form-control-sm'>                       
                     </div>                    
                     <div class="form-group">
-                        <button class="btn btn-success btn-block"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Guardar</button>
+                        <button class="btn btn-success btn-block" onclick="registraEspesifico()"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Guardar</button>
                     </div>
                 </div>`);
             break;
@@ -219,7 +221,7 @@ function formularios(){
                             <input type='date' id='fm' class='form-control form-control-sm'>                       
                         </div>                    
                         <div class="form-group">
-                            <button class="btn btn-success btn-block"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Guardar</button>
+                            <button class="btn btn-success btn-block" onclick="registraEspesifico()"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Guardar</button>
                         </div>
                     </div>`);
                 break;
@@ -240,7 +242,7 @@ function formularios(){
                         <input type='date' id='fm' class='form-control form-control-sm'>                       
                     </div>                    
                     <div class="form-group">
-                        <button class="btn btn-success btn-block"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Guardar</button>
+                        <button class="btn btn-success btn-block" onclick="registraEspesifico()"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Guardar</button>
                     </div>
                 </div>`);
             break;
@@ -248,14 +250,14 @@ function formularios(){
                 $('#form').html(menu+` 
                 <div class='container'>
                     <div class='form-group'>
-                        <select id="tipo2oculares" class='form-control form-control-sm' >
+                        <select id="tipooculares" class='form-control form-control-sm' >
                             <option value="">::tipo2 Oculares ::</option>
                             <option value="fijos">Fijos</option>
                             <option value="movibles">Movibles</option>                       
                         </select>
                     </div> 
                 <div class='form-group'>
-                    <select id="tipo2luz" class='form-control form-control-sm' >
+                    <select id="tipoluz" class='form-control form-control-sm' >
                         <option value="">::tipo2 Luz ::</option>
                         <option value="led">Led</option>
                         <option value="alogena">Alogena</option>                       
@@ -266,7 +268,7 @@ function formularios(){
                         <input type='date' id='fm' class='form-control form-control-sm'>                       
                     </div>                    
                     <div class="form-group">
-                        <button class="btn btn-success btn-block"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Guardar</button>
+                        <button class="btn btn-success btn-block" onclick="registraEspesifico()"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Guardar</button>
                     </div>
                 </div>`);
             break;
@@ -278,7 +280,7 @@ function formularios(){
                     <input type='date' id='fm' class='form-control form-control-sm'>                       
                 </div>                    
                 <div class="form-group">
-                    <button class="btn btn-success btn-block"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Guardar</button>
+                    <button class="btn btn-success btn-block" onclick="registraEspesifico()"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Guardar</button>
                 </div>
             </div>`);
             break;
