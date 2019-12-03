@@ -4,10 +4,9 @@
   });
 </script>
 <div class="container p-4"> 
-        <div class="form-group"> 
-            <button id="btqr" class="btn btn-success btn-block" onclick="IniciarCamara()"><span ><i class='fas fa-qrcode ml-2'  style='font-size:20px'></i></span>  Leer Codigo</button>
-               
-        </div>  
+        <!-- <div class="form-group"> 
+            <button id="btqr" class="btn btn-success btn-block" onclick="IniciarCamara()"><span ><i class='fas fa-qrcode ml-2'  style='font-size:20px'></i></span>  Leer Codigo</button>               
+        </div>   -->
         <div class="row" id="load" hidden="hidden">
                 <div class="col-xs-4 col-xs-offset-4 col-md-2 col-md-offset-5">
                   <img src="../img/load.gif" width="100%" alt="">

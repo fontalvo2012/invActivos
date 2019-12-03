@@ -356,29 +356,33 @@ function ConsultarEquipo(codigo){
   });
 } 
 function ConsultarEquipoBoton(){ 
-  codigo=$('#qrcode').val();
-  $.ajax({
-    method: 'POST',
-    url: 'controller/equiposController.php',
-    data:{
-      eq:codigo,
-      op:'1'
-    }, 
-    beforeSend: function(){
-      $('#load').show();
-    },
-    success: function(res){
-      $('#load').hide();
-      sonar();    
-      if(res =='1000'){        
-        $('#d1').show(1200);              
-      }else{
-        $('#d2').show(1400); 
-        $('#d3').show(1600);
-        $('#d4').show(1800);
+  codigo=$('#qrcode').val();  
+  if(codigo != ""){
+    $.ajax({
+      method: 'POST',
+      url: 'controller/equiposController.php',
+      data:{
+        eq:codigo,
+        op:'1'
+      }, 
+      beforeSend: function(){
+        $('#load').show();
+      },
+      success: function(res){
+        $('#load').hide();
+        sonar();    
+        if(res =='1000'){        
+          $('#d1').show(1200);              
+        }else{
+          $('#d2').show(1400); 
+          $('#d3').show(1600);
+          $('#d4').show(1800);
+        }
       }
-    }
-  });
+    });
+  }else{
+    swal('Alvertencia', 'Debe Leer o Escribir un codigo', 'warning');
+  }
 }   
 
 //Valida el codigo del equipo
