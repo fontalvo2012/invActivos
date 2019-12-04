@@ -27,6 +27,12 @@
      parent::cerrar();
     }
 
+    public function crarTabla(){
+      parent::conectar();      
+      parent::crarTablaActivos();
+     parent::cerrar();
+    }
+
     public function consultarJson(){
 
       $mysqli = new mysqli('localhost', 'root', '', 'activosinv');

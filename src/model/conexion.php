@@ -35,22 +35,64 @@
         }
 
         public function selectItem($consulta,$nombre,$funcion){          
-          if ($resultado = $this->mysqli->query($consulta)) {
-              /* obtener el array de objetos */
-            
+          if ($resultado = $this->mysqli->query($consulta)) {           
             $cadena="<select name='".$nombre."' id='".$nombre."' onchange='".$funcion."' class='custom-select custom-select-sm'>
-                     <option value=''>::Seleccionar ".$nombre."::.</option>  
-                     ";
+                     <option value=''>::Seleccionar ".$nombre."::.</option>";
             while ($fila = $resultado->fetch_row()) {
                 $cadena.="<option value='".$fila[1]."'>".$fila[1]."</option>";              
             }        
             $cadena.="</select>";
-            
-            /* liberar el conjunto de resultados */
-           
           }
 
           return $cadena;
+        }
+
+        public function crarTablaActivos(){
+          $sql='SELECT * FROM activos';
+          $tabla="
+          <table class='table'>
+            <thead class='thead-dark'>
+            <tr>
+              <th>Codigo</th>
+              <th>Nombre</th>
+              <th>Descripcion</th>
+              <th>Serial</th>
+              <th>Marca</th>
+              <th>Modelo</th>
+              <th>Dependencia</th>
+              <th>Pertenencia</th>
+              <th>Sede</th>
+              <th>Fecha Compra</th>
+              <th>Responsable</th>
+              <th>Estado</th>
+              <th>Mantenimiento</th>
+              <th>tipo</th>
+            </tr>
+            </thead>
+            <tbody> "; 
+          if ($resultado = $this->mysqli->query($sql)) { 
+            while ($fila = $resultado->fetch_row()) {
+              $tabla.="
+              <tr>
+                <td>".$fila[1]."</td>
+                <td>".$fila[3]."</td>
+                <td>".$fila[4]."</td>
+                <td>".$fila[5]."</td>
+                <td>".$fila[6]."</td>
+                <td>".$fila[7]."</td>
+                <td>".$fila[9]."</td>
+                <td>".$fila[10]."</td>
+                <td>".$fila[11]."</td>
+                <td>".$fila[12]."</td>
+                <td>".$fila[13]."</td>
+                <td>".$fila[14]."</td>
+                <td>".$fila[47]."</td>
+                <td>".$fila[45]."</td>
+              </tr>";             
+             } 
+             $tabla.="</tbody></table>";
+          }
+          echo $tabla;
         }
 
 

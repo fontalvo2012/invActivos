@@ -264,6 +264,7 @@ function consultarActivo(){
   });
 }
 
+
 function cargarimagen(){
   var codigo=$('#qrcode');
   var file_data = $('#foto').prop('files')[0];   
@@ -329,6 +330,19 @@ function registrarEquipo(){
   }else{
     swal('Alvertencia', 'Seleccione un Tipo de equipo', 'warning');        
   }
+}
+function tablaActivos(){ 
+  $.ajax({
+    method: 'POST',
+    url: 'controller/equiposController.php',
+    data:{      
+      op:'6'
+    },   
+    success: function(res){
+        console.log(res);
+        $('#tabla').html(res);
+     }
+  });
 }
 
 function ConsultarEquipo(codigo){ 

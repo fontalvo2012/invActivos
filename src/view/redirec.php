@@ -21,7 +21,10 @@ function redirec($opt){
             break;      
         case 'consultaequipos':
                 include('view/equipos/consultasEquipos.php');
-                break; 
+                break;
+        case 'tabla':
+            include('view/equipos/tabla.php');
+            break; 
         default:
             # code...
             break;

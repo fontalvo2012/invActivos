@@ -51,7 +51,10 @@
         $estado=$_POST['estado'];
         $costo=$_POST['costo'];
         $equipo->updateEquipo($nombre,$codigo,$descripcion,$serial,$marca,$modelo,$dependencia,$dueno,$sede,$fcompra,$responsable,$proveedor,$estado,$costo);       
-        break;        
+        break; 
+    case '6':
+        $equipo->crarTabla();      
+      break;       
     default:
       echo "Registro default";
       break;
