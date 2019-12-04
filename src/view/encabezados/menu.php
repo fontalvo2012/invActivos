@@ -11,9 +11,7 @@
       <li class="nav-item">
         <a class="nav-link"  href="index.php?opt=lectura"><i class="fa fa-qrcode" aria-hidden="true"></i> Leer Activo</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link"  href="index.php?opt=registro"><i class="fa fa-user-plus" aria-hidden="true"></i> Usuarios</a>
-      </li>
+
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fa fa-plus" aria-hidden="true"></i> Registros
@@ -22,6 +20,8 @@
           <a class="dropdown-item" href="index.php?opt=proveedor"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Proveedor</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="index.php?opt=proveedor"><i class="fa fa-map-marker" aria-hidden="true"></i> Sedes</a>    
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="index.php?opt=registro"><i class="fa fa-user-plus" aria-hidden="true"></i> Usuarios</a>    
         </div>
       </li>
       <li class="nav-item">

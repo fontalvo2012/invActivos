@@ -129,13 +129,34 @@
       $sql='insert into activos(Codigo,Nombre,Imagen,Descripcion,Serial,Marca,Modelo,Dependencia,Dueno,Sede,fechacompra,Responsable,Estado,Proveedor,costo) 
       values("'.$codigo.'","'.$nombre.'","default.png","'.$descripcion.'","'.$serial.'","'.$marca.'","'.$modelo.'","'.$dependencia.'","'.$dueno.'","'.$sede.'","'.$fcompra.'","'.$responsable.'","'.$estado.'","'.$proveedor.'","'.$costo.'")';
       $verificarCodigo = parent::verificarRegistros('select id from activos where codigo="'.$codigo.'"');
-      if($verificarCodigo > 0){
-        echo 'error_3';
+
+      if($verificarCodigo > 0){   
+          $sql="UPDATE activos SET 
+          nombre='$nombre',
+          Descripcion='$descripcion',
+          Serial='$serial',
+          Marca='$marca',
+          Modelo='$modelo',
+          Dependencia='$dependencia',
+          Dueno='$dueno',
+          Sede='$sede',
+          fechacompra='$fcompra',
+          Responsable='$responsable',
+          Estado='$estado',
+          Proveedor='$proveedor',
+          costo='$costo'
+          WHERE codigo='$codigo'";
+       parent::query($sql); 
+       echo"update";
+
       }else{
-        parent::query($sql);        
+        parent::query($sql); 
+        echo"insert";       
       }
       parent::cerrar();
     }
+
+
 
     public function ingresarActivo($sql){
       parent::conectar();

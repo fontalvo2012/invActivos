@@ -8,9 +8,6 @@
   require_once('../model/equipo.php');      
   $equipo = new Equipo();
 
-
-
-
   switch ($opcion) {
     case '1':
       if(empty($codigo)){
@@ -40,7 +37,21 @@
     case '4':
       $equipo->selectEquipos($tipo);     
       break;
-        
+    case '5':
+        $descripcion=$_POST['descripcion'];        
+        $serial=$_POST['serial'];
+        $marca=$_POST['marca'];
+        $modelo=$_POST['modelo'];
+        $dependencia=$_POST['dependencia'];
+        $dueno=$_POST['dueno'];
+        $sede=$_POST['sede'];
+        $fcompra=$_POST['fcompra'];
+        $responsable=$_POST['responsable'];
+        $proveedor=$_POST['proveedor'];
+        $estado=$_POST['estado'];
+        $costo=$_POST['costo'];
+        $equipo->updateEquipo($nombre,$codigo,$descripcion,$serial,$marca,$modelo,$dependencia,$dueno,$sede,$fcompra,$responsable,$proveedor,$estado,$costo);       
+        break;        
     default:
       echo "Registro default";
       break;

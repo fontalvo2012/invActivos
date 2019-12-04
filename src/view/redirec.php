@@ -13,6 +13,9 @@ function redirec($opt){
         case 'equipos':
             include('view/equipos/principal.php');
             break;
+        case 'actualizar':
+                include('view/equipos/actualizar.php');
+                break;
         case 'proveedor':
             include('view/provedores/ingreso.php');
             break;      

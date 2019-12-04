@@ -26,7 +26,7 @@
           <a href="index.php?opt=consultaequipos" class="btn btn-warning btn-block" id="d2"> Consultar</a>
         </div>
         <div class="form-group">
-          <a href="" class="btn btn-warning btn-block" id="d3"> Actualizar</a>
+          <a href="index.php?opt=actualizar" class="btn btn-warning btn-block" id="d3"> Actualizar</a>
         </div>
         <div class="form-group">
           <a href="" class="btn btn-warning btn-block" id="d4"> Dato 4</a>

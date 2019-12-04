@@ -242,7 +242,7 @@ function consultarActivo(){
         $('#marca').val(activo[0].marca);
         $('#modelo').val(activo[0].model);
         $('#dep').val(activo[0].dependencia);
-        $('#dueno').val(activo[0].dueno);
+        $('#duenio').val(activo[0].dueno);
         $('#sede').val(activo[0].sede);
         $('#fcompra').val(activo[0].fcompra);
         $('#responsable').val(activo[0].responsable);
@@ -307,7 +307,7 @@ function registrarEquipo(){
         serial:$('#serial').val(),
         marca:$('#marca').val(),
         modelo:$('#modelo').val(),
-        dependencia:$('#dependencia').val(),
+        dependencia:$('#dep').val(),
         dueno:$('#duenio').val(),
         sede:$('#sede').val(),
         fcompra:$('#fcompra').val(),
@@ -317,12 +317,13 @@ function registrarEquipo(){
         costo:$('#costo').val()
       },    
       success: function(res){
-        if(res == 'error_3'){
-          swal('Alvertencia', 'El Codigo ya existe', 'warning');        
-        }else{
-          swal('Informacion', 'Equipo Registrado', 'success');  
-          generarForm(2);
-        }   
+          if(res=="insert"){
+            swal('Info', 'Datos Insertados', 'success'); 
+            generarForm(2);       
+          }else if(res=="update"){
+            swal('Info', 'Datos Actualizado', 'success');    
+          }
+
       }
     });
   }else{
