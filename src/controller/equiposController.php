@@ -3,8 +3,10 @@
   @$opcion=$_POST['op'];
   @$nombre=$_POST['nombre'];
   @$tipo=$_POST['tipo'];
+  @$clase=$_POST['clase'];
   session_start();
   $_SESSION['cod']=$codigo;
+  $usuario=$_SESSION['nombre'];
   require_once('../model/equipo.php');      
   $equipo = new Equipo();
 
@@ -31,8 +33,8 @@
         $responsable=$_POST['responsable'];
         $proveedor=$_POST['proveedor'];
         $estado=$_POST['estado'];
-        $costo=$_POST['costo'];
-        $equipo->registroEquipo($nombre,$codigo,$descripcion,$serial,$marca,$modelo,$dependencia,$dueno,$sede,$fcompra,$responsable,$proveedor,$estado,$costo);       
+        $costo=$_POST['costo'];       
+        $equipo->registroEquipo($nombre,$codigo,$descripcion,$serial,$marca,$modelo,$dependencia,$dueno,$sede,$fcompra,$responsable,$proveedor,$estado,$costo,$usuario,$clase);       
         break;
     case '4':
       $equipo->selectEquipos($tipo);     
@@ -53,7 +55,25 @@
         $equipo->updateEquipo($nombre,$codigo,$descripcion,$serial,$marca,$modelo,$dependencia,$dueno,$sede,$fcompra,$responsable,$proveedor,$estado,$costo);       
         break; 
     case '6':
-        $equipo->crarTabla();      
+
+        $cadena=$_SESSION['c'];
+
+        switch ($cadena) {
+          case 'sistemas':
+              $sql="SELECT * FROM activos WHERE encargado='sistemas'";
+            break;
+          case 'biomedicos':
+              $sql="SELECT * FROM activos WHERE encargado='biomedicos'";
+            break;
+          case 'mantenimiento':
+            $sql="SELECT * FROM activos WHERE encargado='mantenimientos'";
+            break;
+          default:
+              $sql="SELECT * FROM activos";
+            break;
+        }    
+      
+        $equipo->crarTabla($sql);      
       break;       
     default:
       echo "Registro default";

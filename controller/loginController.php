@@ -1,5 +1,5 @@
 <?php
-
+  
   # Leemos las variables enviadas mediante Ajax
   $user = $_POST['user_php'];
   $clave = $_POST['clave_php'];

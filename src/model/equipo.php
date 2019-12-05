@@ -27,9 +27,9 @@
      parent::cerrar();
     }
 
-    public function crarTabla(){
+    public function crarTabla($sql){
       parent::conectar();      
-      parent::crarTablaActivos();
+      parent::crarTablaActivos($sql);
      parent::cerrar();
     }
 
@@ -115,10 +115,12 @@
      parent::cerrar();
     }
 
-    public function registroEquipo($nombre,$codigo,$descripcion,$serial,$marca,$modelo,$dependencia,$dueno,$sede,$fcompra,$responsable,$proveedor,$estado,$costo){
+    public function registroEquipo($nombre,$codigo,$descripcion,$serial,$marca,$modelo,$dependencia,$dueno,$sede,$fcompra,$responsable,$proveedor,$estado,$costo,$user,$clase){
       parent::conectar();
       $nombre=parent::filtrar($nombre);
       $codigo=parent::filtrar($codigo);
+      $clase=parent::filtrar($clase);
+      $user=parent::filtrar($user);
       $descripcion=parent::filtrar($descripcion);
       $serial=parent::filtrar($serial);
       $marca=parent::filtrar($marca);
@@ -132,8 +134,8 @@
       $estado=parent::filtrar($estado);
       $costo=parent::filtrar($costo);
 
-      $sql='insert into activos(Codigo,Nombre,Imagen,Descripcion,Serial,Marca,Modelo,Dependencia,Dueno,Sede,fechacompra,Responsable,Estado,Proveedor,costo) 
-      values("'.$codigo.'","'.$nombre.'","default.png","'.$descripcion.'","'.$serial.'","'.$marca.'","'.$modelo.'","'.$dependencia.'","'.$dueno.'","'.$sede.'","'.$fcompra.'","'.$responsable.'","'.$estado.'","'.$proveedor.'","'.$costo.'")';
+      $sql='insert into activos(Codigo,Nombre,Imagen,Descripcion,Serial,Marca,Modelo,Dependencia,Dueno,Sede,fechacompra,Responsable,Estado,Proveedor,costo,user,encargado) 
+      values("'.$codigo.'","'.$nombre.'","default.png","'.$descripcion.'","'.$serial.'","'.$marca.'","'.$modelo.'","'.$dependencia.'","'.$dueno.'","'.$sede.'","'.$fcompra.'","'.$responsable.'","'.$estado.'","'.$proveedor.'","'.$costo.'","'.$user.'","'.$clase.'")';
       $verificarCodigo = parent::verificarRegistros('select id from activos where codigo="'.$codigo.'"');
 
       if($verificarCodigo > 0){   

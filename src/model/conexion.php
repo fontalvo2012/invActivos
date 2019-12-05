@@ -47,8 +47,8 @@
           return $cadena;
         }
 
-        public function crarTablaActivos(){
-          $sql='SELECT * FROM activos';
+        public function crarTablaActivos($sql){
+        
           $tabla="
           <table class='table'>
             <thead class='thead-dark'>

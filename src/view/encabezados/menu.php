@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Activos. <span class="small ml-2 mr-3 text-danger text-uppercase">::<?php echo @$_SESSION['nombres'] ?>::</span></a>
+  <a class="navbar-brand" href="#">Activos. <span class="small ml-2 mr-3 text-danger text-uppercase">::<?php echo $_SESSION['nombre'] ?>::</span></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -11,7 +11,9 @@
       <li class="nav-item">
         <a class="nav-link"  href="index.php?opt=lectura"><i class="fa fa-qrcode" aria-hidden="true"></i> Leer Activo</a>
       </li>
-
+      <li class="nav-item">
+        <a class="nav-link"  href="index.php?opt=tabla"><i class="fa fa-table" aria-hidden="true"></i> Ver Activos</a>
+      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fa fa-plus" aria-hidden="true"></i> Registros

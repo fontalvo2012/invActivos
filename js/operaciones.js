@@ -19,8 +19,9 @@ $('#login').click(function(){
         swal('Error', 'Por favor ingrese un email valido', 'warning');
       }else if(res == 'error_3'){
         swal('Error', 'El usuario y contraseña que ingresaste es incorrecto', 'error');
-      }else{       
-        window.location.href= res;
+      }else{
+        
+       window.location.href= res;
       }
 
     }

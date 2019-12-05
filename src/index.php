@@ -23,7 +23,7 @@
 
   <body >
     <?php 
-      session_start();
+      session_start();      
       include('view/redirec.php');
       include('view/encabezados/menu.php');
     ?>

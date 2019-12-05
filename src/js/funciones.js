@@ -296,6 +296,7 @@ function cargarimagen(){
 }
 function registrarEquipo(){    
   codigo=$('#qrcode').val();
+  clase=$('#dependencia').val();
   if($('#tipo').val()!=""){  
     $.ajax({
       method: 'POST',
@@ -303,6 +304,7 @@ function registrarEquipo(){
       data: {    
         op:'3',
         eq:codigo,
+        clase:clase,
         nombre:$('#tipo').val(),
         descripcion:$('#descripcion').val(),
         serial:$('#serial').val(),
@@ -318,6 +320,7 @@ function registrarEquipo(){
         costo:$('#costo').val()
       },    
       success: function(res){
+        console.log(res);
           if(res=="insert"){
             swal('Info', 'Datos Insertados', 'success'); 
             generarForm(2);       
