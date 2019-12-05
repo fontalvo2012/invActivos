@@ -50,9 +50,8 @@
         public function crarTablaActivos($sql){
         
           $tabla="
-          <table class='table'>
-            <thead class='thead-dark'>
-            <tr>
+          <table id='myTable'>            
+            <tr class='header'>
               <th>Codigo</th>
               <th>Nombre</th>
               <th>Descripcion</th>
@@ -68,8 +67,7 @@
               <th>Mantenimiento</th>
               <th>tipo</th>
             </tr>
-            </thead>
-            <tbody> "; 
+             "; 
           if ($resultado = $this->mysqli->query($sql)) { 
             while ($fila = $resultado->fetch_row()) {
               $tabla.="
@@ -90,7 +88,7 @@
                 <td>".$fila[45]."</td>
               </tr>";             
              } 
-             $tabla.="</tbody></table>";
+             $tabla.="</table>";
           }
           echo $tabla;
         }
