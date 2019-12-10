@@ -46,7 +46,9 @@
 
     <!-- Formulario Login -->
     <div class="container">
+
       <div class="row">
+         <div class="col"> <img src="img/logo.png" class="img-circle" alt="Cinque Terre" width="120" height="100"> </div> 
         <div class="col-xs-12 col-md-4 col-md-offset-4">
           <!-- Margen superior (css personalizado )-->
           <div class="spacing-1"></div>
@@ -54,7 +56,8 @@
           <!-- Estructura del formulario -->
           <fieldset>
 
-            <legend class="center">Login</legend>
+            
+            <legend class="center"><h3>.::INGRESO::.</h3></legend>
 
             <!-- Caja de texto para usuario -->
             <label class="sr-only" for="user">Usuario</label>

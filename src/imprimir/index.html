@@ -7,6 +7,8 @@
 	<script src="jquery.js"></script>
 	<script src="jquery.qrcode.min.js"></script>
 	<script>
+
+
 		function prueba(texto,id){			
 			jQuery("#"+id).qrcode({
 				width: 110,
@@ -14,12 +16,13 @@
 				text:texto
 			});
 		}
-		function crearContenedores(){
+		function crearContenedores(ini,fin){
+			
 			var abreviacion=$('#abrev').val();
 			var cadena='';
 			var num='';
 			var codigo='';
-			for (var i = 0; i < 56; i++) {								
+			for (var i = ini; i < fin; i++) {								
 				if(i<10){
 					codigo='000'+i;
 				}else if(i<100){	
@@ -40,12 +43,13 @@
 			}
 				$('#g').html(cadena);				
 		}
-		function crearCodigos(){
+		function crearCodigos(ini,fin){
+		
 			var abreviacion=$('#abrev').val();
 			var cadena='';
 			var codigo='';
 			var num=0;
-			for (var i = 0; i < 56; i++) {
+			for (var i = ini; i < fin; i++) {
 				if(i<10){
 					codigo='000'+i;
 				}else if(i<100){	
@@ -54,7 +58,8 @@
 					codigo='0'+i;
 				}
 				console.log(codigo);			
-				prueba(abreviacion+codigo,'c'+i);	//AQUI				
+				prueba(abreviacion+codigo,'c'+i);	//AQUI	
+				$('#cd').hide();			
 			}								
 		}		 
 	</script>
@@ -73,14 +78,22 @@
 	</style>
 </head>
 <body>
-	<table>
-		
-		<tr>
-			<td><input type="text" id="abrev"></td>			
-			<td><button onclick=" crearContenedores();crearCodigos();">Codigos</button></td>
-		</tr>
-	</table>
-
+	<div id="cd">
+		<table>		
+			<tr>
+				
+				<td><input type="text" id="abrev"></td>			
+				<td><button onclick=" crearContenedores(0,56);crearCodigos(0,56);">pag1</button></td>
+				<td><button onclick=" crearContenedores(56,112);crearCodigos(56,112);">pag2</button></td>
+				<td><button onclick=" crearContenedores(112,168);crearCodigos(112,168);">pag3</button></td>
+				<td><button onclick=" crearContenedores(168,224);crearCodigos(168,224);">pag4</button></td>
+				<td><button onclick=" crearContenedores(224,280);crearCodigos(224,280);">pag5</button></td>
+				<td><button onclick=" crearContenedores(280,336);crearCodigos(280,336);">pag6</button></td>
+				<td><button onclick=" crearContenedores(336,392);crearCodigos(336,392);">pag7</button></td>
+			</tr>
+		</table>
+	
+	</div>
 
 <div class="row m-4" id="g">	
 

@@ -29,6 +29,6 @@
           <a href="index.php?opt=actualizar" class="btn btn-warning btn-block" id="d3"> Actualizar</a>
         </div>
         <div class="form-group">
-          <a href="" class="btn btn-warning btn-block" id="d4"> Dato 4</a>
+          <a href="" class="btn btn-warning btn-block" id="d4"> Salir</a>
         </div>
     </div>

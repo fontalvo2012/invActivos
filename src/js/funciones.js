@@ -171,7 +171,7 @@ function consultarActivo2(){
                 <div class="card-header-sm" id="headingTwo">
                   <h5 class="mb-0">
                     <button class="btn btn-warning btn-block" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                     Datos Espesificos
+                     Datos Especificos
                     </button>
                   </h5>
                 </div>
@@ -394,7 +394,7 @@ function ConsultarEquipoBoton(){
         }else{
           $('#d2').show(1400); 
           $('#d3').show(1600);
-          $('#d4').show(1800);
+          //$('#d4').show(1800);
         }
       }
     });
